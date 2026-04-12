@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(node -e ':*)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(npx vite:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls C:/Users/bryan/scam-league/.env*)",
+      "Bash(ls C:/Users/bryan/scam-league/src/types/database*)",
+      "Bash(ls C:/Users/bryan/scam-league/src/components/HistoryPage*)",
+      "Bash(npm install:*)",
+      "Bash(node -e \"require\\('xlsx'\\); console.log\\('xlsx ok'\\)\")",
+      "Bash(node:*)"
+    ]
+  }
+}
