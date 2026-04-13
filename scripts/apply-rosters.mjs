@@ -1,7 +1,7 @@
 /**
  * apply-rosters.mjs
  *
- * Reads an Excel file and permanently writes fantasyTeam + capValue
+ * Reads an Excel (.xlsx) or CSV file and permanently writes fantasyTeam + capValue
  * into src/data/players.ts.
  *
  * Usage:
@@ -18,8 +18,8 @@
  */
 
 import { readFileSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
-import { read as xlsxRead, utils as xlsxUtils } from 'xlsx';
+import { resolve, extname } from 'path';
+import ExcelJS from 'exceljs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -30,17 +30,15 @@ const ROOT      = resolve(__dirname, '..');
 
 const inputArg = process.argv[2];
 if (!inputArg) {
-  console.error('Usage: node scripts/apply-rosters.mjs <path-to-excel>');
+  console.error('Usage: node scripts/apply-rosters.mjs <path-to-excel-or-csv>');
   process.exit(1);
 }
 
 const inputPath = resolve(ROOT, inputArg);
+const ext       = extname(inputPath).toLowerCase();
 console.log(`\nReading: ${inputPath}\n`);
 
-const wb = xlsxRead(readFileSync(inputPath), { type: 'buffer', cellText: true });
-console.log(`Sheets found: ${wb.SheetNames.join(', ')}`);
-
-// ── 2. Detect layout ──────────────────────────────────────────────────────────
+// ── 2. Parse file ─────────────────────────────────────────────────────────────
 
 function normalizeHeader(h) {
   return String(h).toLowerCase().replace(/[^a-z]/g, '');
@@ -51,57 +49,110 @@ const TEAM_COLS   = ['fantasyteam','fantasyowner','owner','team'];
 const CAP_COLS    = ['capvalue','cap value','cap','salary','value','contract'];
 
 function pickCol(headers, candidates) {
-  // First pass: exact match (case-insensitive, trimmed)
   for (const h of headers) {
     if (candidates.includes(h.trim().toLowerCase())) return h;
   }
-  // Second pass: strip all non-alpha
   const norm = headers.map(h => h.toLowerCase().replace(/[^a-z]/g, ''));
   for (const c of candidates) {
-    const cNorm = c.replace(/[^a-z]/g, '');
-    const i = norm.indexOf(cNorm);
+    const i = norm.indexOf(c.replace(/[^a-z]/g, ''));
     if (i !== -1) return headers[i];
   }
   return null;
 }
 
-function rowsFromSheet(sheetName, overrideTeam = null) {
-  const sheet   = wb.Sheets[sheetName];
-  const raw     = xlsxUtils.sheet_to_json(sheet, { defval: '' });
-  if (!raw.length) return [];
+function cellStr(v) {
+  if (v == null) return '';
+  if (v instanceof Date) return v.toISOString();
+  if (typeof v === 'object' && 'text' in v) return String(v.text);
+  return String(v);
+}
 
-  const headers   = Object.keys(raw[0]);
+function wsToJson(sheet) {
+  const out = [];
+  let headers = [];
+  sheet.eachRow(row => {
+    const vals = Array.from(row.values).slice(1); // 1-indexed → 0-indexed
+    if (!headers.length) {
+      headers = vals.map(v => cellStr(v).trim());
+      return;
+    }
+    const obj = {};
+    headers.forEach((h, i) => { if (h) obj[h] = cellStr(vals[i]).trim(); });
+    if (Object.values(obj).some(v => v !== '')) out.push(obj);
+  });
+  return out;
+}
+
+// Simple RFC 4180 CSV parser
+function parseCSVText(text) {
+  const lines = text.split(/\r?\n/).filter(l => l.trim());
+  if (lines.length < 2) return [];
+  function splitLine(line) {
+    const fields = [];
+    let field = '', inQuote = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') {
+        if (inQuote && line[i + 1] === '"') { field += '"'; i++; }
+        else inQuote = !inQuote;
+      } else if (ch === ',' && !inQuote) { fields.push(field.trim()); field = ''; }
+      else field += ch;
+    }
+    fields.push(field.trim());
+    return fields;
+  }
+  const headers = splitLine(lines[0]);
+  return lines.slice(1).map(line => {
+    const vals = splitLine(line);
+    const obj = {};
+    headers.forEach((h, i) => { if (h) obj[h] = vals[i] ?? ''; });
+    return obj;
+  }).filter(row => Object.values(row).some(v => v !== ''));
+}
+
+function extractRows(rawRows, teamOverride) {
+  if (!rawRows.length) return [];
+  const headers   = Object.keys(rawRows[0]);
   const playerCol = pickCol(headers, PLAYER_COLS);
-  const teamCol   = overrideTeam ? null : pickCol(headers, TEAM_COLS);
+  const teamCol   = teamOverride ? null : pickCol(headers, TEAM_COLS);
   const capCol    = pickCol(headers, CAP_COLS);
-
   if (!playerCol) return [];
-
-  return raw
+  return rawRows
     .map(r => ({
       name:        String(r[playerCol] ?? '').trim(),
-      fantasyTeam: overrideTeam ?? (teamCol ? String(r[teamCol] ?? '').trim() : ''),
+      fantasyTeam: teamOverride ?? (teamCol ? String(r[teamCol] ?? '').trim() : ''),
       capValue:    capCol ? String(r[capCol] ?? '').replace(/[^0-9.]/g, '') : '',
     }))
     .filter(r => r.name.length > 0);
 }
 
-// Decide: multi-sheet (preferred) or single-sheet?
-const isMultiTeam = wb.SheetNames.length > 1;
+const wb = new ExcelJS.Workbook();
 
 let allRows = [];
 
-if (isMultiTeam) {
-  console.log(`\nMode: MULTI-SHEET — treating each sheet name as the fantasy team name`);
-  for (const sheetName of wb.SheetNames) {
-    const rows = rowsFromSheet(sheetName, sheetName);
-    console.log(`  "${sheetName}": ${rows.length} players`);
-    allRows.push(...rows);
-  }
-} else {
-  console.log(`\nMode: SINGLE-SHEET — looking for Player / Fantasy Team / Cap columns`);
-  allRows = rowsFromSheet(wb.SheetNames[0]);
+if (ext === '.csv') {
+  console.log('Mode: CSV');
+  await wb.csv.readFile(inputPath);
+  const sheet = wb.worksheets[0];
+  allRows = extractRows(wsToJson(sheet), null);
   console.log(`  ${allRows.length} rows parsed`);
+} else {
+  await wb.xlsx.readFile(inputPath);
+  console.log(`Sheets found: ${wb.worksheets.map(ws => ws.name).join(', ')}`);
+  const isMultiTeam = wb.worksheets.length > 1;
+
+  if (isMultiTeam) {
+    console.log(`\nMode: MULTI-SHEET — treating each sheet name as the fantasy team name`);
+    for (const ws of wb.worksheets) {
+      const rows = extractRows(wsToJson(ws), ws.name);
+      console.log(`  "${ws.name}": ${rows.length} players`);
+      allRows.push(...rows);
+    }
+  } else {
+    console.log(`\nMode: SINGLE-SHEET — looking for Player / Fantasy Team / Cap columns`);
+    allRows = extractRows(wsToJson(wb.worksheets[0]), null);
+    console.log(`  ${allRows.length} rows parsed`);
+  }
 }
 
 if (!allRows.length) {
@@ -141,8 +192,8 @@ for (const { name, fantasyTeam, capValue } of allRows) {
 
   const cap = capValue ? parseFloat(capValue) : undefined;
   updates[player.id] = {
-    ...(fantasyTeam                       ? { fantasyTeam }          : {}),
-    ...(cap != null && !isNaN(cap)        ? { capValue: cap }        : {}),
+    ...(fantasyTeam                ? { fantasyTeam }   : {}),
+    ...(cap != null && !isNaN(cap) ? { capValue: cap } : {}),
   };
   matched++;
 }
