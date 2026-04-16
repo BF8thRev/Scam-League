@@ -3,6 +3,7 @@ import { Search } from 'lucide-react';
 import { BaseballPlayer, Position } from '../types';
 import { PLAYERS } from '../data/players';
 import { calcPts } from '../lib/scoring';
+import { lookupPlayerRoster } from '../lib/rosterLookup';
 
 const POS_COLOR: Record<Position, string> = {
   C:   'text-sky-400',
@@ -20,16 +21,17 @@ interface Props {
   usedIds: Set<string>;
   onSelect: (player: BaseballPlayer) => void;
   placeholder?: string;
+  players?: BaseballPlayer[];
 }
 
-export default function PlayerSearch({ usedIds, onSelect, placeholder = 'Search players…' }: Props) {
+export default function PlayerSearch({ usedIds, onSelect, placeholder = 'Search players…', players = PLAYERS }: Props) {
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const results = query.trim().length < 1
     ? []
-    : PLAYERS
+    : players
         .filter(p => !usedIds.has(p.id) && p.name.toLowerCase().includes(query.toLowerCase()))
         .sort((a, b) => calcPts(b) - calcPts(a))
         .slice(0, 10);
@@ -43,7 +45,13 @@ export default function PlayerSearch({ usedIds, onSelect, placeholder = 'Search 
   }, []);
 
   function pick(player: BaseballPlayer) {
-    onSelect(player);
+    // Enrich player with roster lookup data
+    const rosterInfo = lookupPlayerRoster(player.name);
+    const enrichedPlayer = rosterInfo
+      ? { ...player, fantasyTeam: rosterInfo.fantasyTeam, capValue: rosterInfo.capValue }
+      : player;
+
+    onSelect(enrichedPlayer);
     setQuery('');
     setOpen(false);
   }

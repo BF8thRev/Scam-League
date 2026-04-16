@@ -1,0 +1,534 @@
+[
+  {
+    "id": "rutschman",
+    "name": "Adley Rutschman",
+    "position": "C",
+    "team": "BAL",
+    "age": 27
+  },
+  {
+    "id": "raleigh",
+    "name": "Cal Raleigh",
+    "position": "C",
+    "team": "SEA",
+    "age": 28
+  },
+  {
+    "id": "wsmith",
+    "name": "Will Smith",
+    "position": "C",
+    "team": "LAD",
+    "age": 29
+  },
+  {
+    "id": "realmuto",
+    "name": "J.T. Realmuto",
+    "position": "C",
+    "team": "PHI",
+    "age": 34
+  },
+  {
+    "id": "moreno",
+    "name": "Gabriel Moreno",
+    "position": "C",
+    "team": "ARI",
+    "age": 24
+  },
+  {
+    "id": "kirk",
+    "name": "Alejandro Kirk",
+    "position": "C",
+    "team": "TOR",
+    "age": 26
+  },
+  {
+    "id": "freeman",
+    "name": "Freddie Freeman",
+    "position": "1B",
+    "team": "LAD",
+    "age": 35
+  },
+  {
+    "id": "vlad",
+    "name": "Vladimir Guerrero Jr.",
+    "position": "1B",
+    "team": "TOR",
+    "age": 26
+  },
+  {
+    "id": "alonso",
+    "name": "Pete Alonso",
+    "position": "1B",
+    "team": "NYM",
+    "age": 30
+  },
+  {
+    "id": "olson",
+    "name": "Matt Olson",
+    "position": "1B",
+    "team": "ATL",
+    "age": 31
+  },
+  {
+    "id": "walker",
+    "name": "Christian Walker",
+    "position": "1B",
+    "team": "ARI",
+    "age": 33
+  },
+  {
+    "id": "torkelson",
+    "name": "Spencer Torkelson",
+    "position": "1B",
+    "team": "DET",
+    "age": 25
+  },
+  {
+    "id": "altuve",
+    "name": "Jose Altuve",
+    "position": "2B",
+    "team": "HOU",
+    "age": 35
+  },
+  {
+    "id": "albies",
+    "name": "Ozzie Albies",
+    "position": "2B",
+    "team": "ATL",
+    "age": 28
+  },
+  {
+    "id": "marte",
+    "name": "Ketel Marte",
+    "position": "2B",
+    "team": "ARI",
+    "age": 31
+  },
+  {
+    "id": "semien",
+    "name": "Marcus Semien",
+    "position": "2B",
+    "team": "TEX",
+    "age": 35
+  },
+  {
+    "id": "gimenez",
+    "name": "Andrés Giménez",
+    "position": "2B",
+    "team": "CLE",
+    "age": 26
+  },
+  {
+    "id": "bwitt",
+    "name": "Bobby Witt Jr.",
+    "position": "SS",
+    "team": "KC",
+    "age": 25
+  },
+  {
+    "id": "ghenderson",
+    "name": "Gunnar Henderson",
+    "position": "SS",
+    "team": "BAL",
+    "age": 24
+  },
+  {
+    "id": "edc",
+    "name": "Elly De La Cruz",
+    "position": "SS",
+    "team": "CIN",
+    "age": 23
+  },
+  {
+    "id": "lindor",
+    "name": "Francisco Lindor",
+    "position": "SS",
+    "team": "NYM",
+    "age": 31
+  },
+  {
+    "id": "seager",
+    "name": "Corey Seager",
+    "position": "SS",
+    "team": "TEX",
+    "age": 31
+  },
+  {
+    "id": "tturner",
+    "name": "Trea Turner",
+    "position": "SS",
+    "team": "PHI",
+    "age": 32
+  },
+  {
+    "id": "holliday",
+    "name": "Jackson Holliday",
+    "position": "SS",
+    "team": "BAL",
+    "age": 21
+  },
+  {
+    "id": "abrams",
+    "name": "CJ Abrams",
+    "position": "SS",
+    "team": "WAS",
+    "age": 24
+  },
+  {
+    "id": "jramirez",
+    "name": "José Ramírez",
+    "position": "3B",
+    "team": "CLE",
+    "age": 32
+  },
+  {
+    "id": "machado",
+    "name": "Manny Machado",
+    "position": "3B",
+    "team": "SD",
+    "age": 32
+  },
+  {
+    "id": "riley",
+    "name": "Austin Riley",
+    "position": "3B",
+    "team": "ATL",
+    "age": 28
+  },
+  {
+    "id": "bregman",
+    "name": "Alex Bregman",
+    "position": "3B",
+    "team": "BOS",
+    "age": 31
+  },
+  {
+    "id": "arenado",
+    "name": "Nolan Arenado",
+    "position": "3B",
+    "team": "STL",
+    "age": 34
+  },
+  {
+    "id": "soto",
+    "name": "Juan Soto",
+    "position": "OF",
+    "team": "NYM",
+    "age": 26
+  },
+  {
+    "id": "acuna",
+    "name": "Ronald Acuña Jr.",
+    "position": "OF",
+    "team": "ATL",
+    "age": 27
+  },
+  {
+    "id": "yordan",
+    "name": "Yordan Alvarez",
+    "position": "OF",
+    "team": "HOU",
+    "age": 28
+  },
+  {
+    "id": "betts",
+    "name": "Mookie Betts",
+    "position": "OF",
+    "team": "LAD",
+    "age": 32
+  },
+  {
+    "id": "tucker",
+    "name": "Kyle Tucker",
+    "position": "OF",
+    "team": "HOU",
+    "age": 28
+  },
+  {
+    "id": "jrod",
+    "name": "Julio Rodríguez",
+    "position": "OF",
+    "team": "SEA",
+    "age": 24
+  },
+  {
+    "id": "carroll",
+    "name": "Corbin Carroll",
+    "position": "OF",
+    "team": "ARI",
+    "age": 24
+  },
+  {
+    "id": "mharris",
+    "name": "Michael Harris II",
+    "position": "OF",
+    "team": "ATL",
+    "age": 24
+  },
+  {
+    "id": "chourio",
+    "name": "Jackson Chourio",
+    "position": "OF",
+    "team": "MIL",
+    "age": 21
+  },
+  {
+    "id": "larsn",
+    "name": "Lars Nootbaar",
+    "position": "OF",
+    "team": "STL",
+    "age": 27
+  },
+  {
+    "id": "arozarena",
+    "name": "Randy Arozarena",
+    "position": "OF",
+    "team": "SEA",
+    "age": 30
+  },
+  {
+    "id": "trout",
+    "name": "Mike Trout",
+    "position": "OF",
+    "team": "LAA",
+    "age": 33
+  },
+  {
+    "id": "ohtani-bat",
+    "name": "Shohei Ohtani (bat)",
+    "position": "DH",
+    "team": "LAD",
+    "age": 30
+  },
+  {
+    "id": "ozuna",
+    "name": "Marcell Ozuna",
+    "position": "DH",
+    "team": "ATL",
+    "age": 34
+  },
+  {
+    "id": "skubal",
+    "name": "Tarik Skubal",
+    "position": "SP",
+    "team": "DET",
+    "age": 28
+  },
+  {
+    "id": "gcole",
+    "name": "Gerrit Cole",
+    "position": "SP",
+    "team": "NYY",
+    "age": 34
+  },
+  {
+    "id": "zwheeler",
+    "name": "Zack Wheeler",
+    "position": "SP",
+    "team": "PHI",
+    "age": 35
+  },
+  {
+    "id": "yamamoto",
+    "name": "Yoshinobu Yamamoto",
+    "position": "SP",
+    "team": "LAD",
+    "age": 27
+  },
+  {
+    "id": "burnes",
+    "name": "Corbin Burnes",
+    "position": "SP",
+    "team": "BAL",
+    "age": 30
+  },
+  {
+    "id": "skenes",
+    "name": "Paul Skenes",
+    "position": "SP",
+    "team": "PIT",
+    "age": 22
+  },
+  {
+    "id": "lwebb",
+    "name": "Logan Webb",
+    "position": "SP",
+    "team": "SF",
+    "age": 28
+  },
+  {
+    "id": "fried",
+    "name": "Max Fried",
+    "position": "SP",
+    "team": "NYY",
+    "age": 31
+  },
+  {
+    "id": "strider",
+    "name": "Spencer Strider",
+    "position": "SP",
+    "team": "ATL",
+    "age": 26
+  },
+  {
+    "id": "cease",
+    "name": "Dylan Cease",
+    "position": "SP",
+    "team": "SD",
+    "age": 29
+  },
+  {
+    "id": "alcantara",
+    "name": "Sandy Alcantara",
+    "position": "SP",
+    "team": "MIA",
+    "age": 29
+  },
+  {
+    "id": "imanaga",
+    "name": "Shota Imanaga",
+    "position": "SP",
+    "team": "CHC",
+    "age": 31
+  },
+  {
+    "id": "peralta",
+    "name": "Freddy Peralta",
+    "position": "SP",
+    "team": "MIL",
+    "age": 28
+  },
+  {
+    "id": "gausman",
+    "name": "Kevin Gausman",
+    "position": "SP",
+    "team": "TOR",
+    "age": 34
+  },
+  {
+    "id": "glasnow",
+    "name": "Tyler Glasnow",
+    "position": "SP",
+    "team": "LAD",
+    "age": 32
+  },
+  {
+    "id": "nola",
+    "name": "Aaron Nola",
+    "position": "SP",
+    "team": "PHI",
+    "age": 31
+  },
+  {
+    "id": "lopez",
+    "name": "Pablo López",
+    "position": "SP",
+    "team": "MIN",
+    "age": 28
+  },
+  {
+    "id": "sale",
+    "name": "Chris Sale",
+    "position": "SP",
+    "team": "ATL",
+    "age": 36
+  },
+  {
+    "id": "bieber",
+    "name": "Shane Bieber",
+    "position": "SP",
+    "team": "CLE",
+    "age": 29
+  },
+  {
+    "id": "ohtani-pit",
+    "name": "Shohei Ohtani (SP)",
+    "position": "SP",
+    "team": "LAD",
+    "age": 30
+  },
+  {
+    "id": "clase",
+    "name": "Emmanuel Clase",
+    "position": "RP",
+    "team": "CLE",
+    "age": 27
+  },
+  {
+    "id": "helsley",
+    "name": "Ryan Helsley",
+    "position": "RP",
+    "team": "STL",
+    "age": 30
+  },
+  {
+    "id": "fbautista",
+    "name": "Félix Bautista",
+    "position": "RP",
+    "team": "BAL",
+    "age": 29
+  },
+  {
+    "id": "hader",
+    "name": "Josh Hader",
+    "position": "RP",
+    "team": "HOU",
+    "age": 30
+  },
+  {
+    "id": "diaz",
+    "name": "Edwin Díaz",
+    "position": "RP",
+    "team": "NYM",
+    "age": 31
+  },
+  {
+    "id": "mmiller",
+    "name": "Mason Miller",
+    "position": "RP",
+    "team": "OAK",
+    "age": 26
+  },
+  {
+    "id": "doval",
+    "name": "Camilo Doval",
+    "position": "RP",
+    "team": "SF",
+    "age": 27
+  },
+  {
+    "id": "munoz",
+    "name": "Andrés Muñoz",
+    "position": "RP",
+    "team": "SEA",
+    "age": 25
+  },
+  {
+    "id": "bednar",
+    "name": "David Bednar",
+    "position": "RP",
+    "team": "PIT",
+    "age": 30
+  },
+  {
+    "id": "holmes",
+    "name": "Clay Holmes",
+    "position": "RP",
+    "team": "NYY",
+    "age": 32
+  },
+  {
+    "id": "phillipse",
+    "name": "Evan Phillips",
+    "position": "RP",
+    "team": "LAD",
+    "age": 30
+  },
+  {
+    "id": "romano",
+    "name": "Jordan Romano",
+    "position": "RP",
+    "team": "TOR",
+    "age": 31
+  }
+]

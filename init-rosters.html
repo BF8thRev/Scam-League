@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scam League - Load Rosters</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #0f0; }
+    .container { max-width: 600px; }
+    .success { color: #0f0; font-weight: bold; }
+    pre { background: #111; padding: 10px; border: 1px solid #0f0; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🏟️ Loading Rosters...</h2>
+    <div id="status"></div>
+  </div>
+
+  <script>
+const rosterData = 
+{
+  "edc": {
+    "fantasyTeam": "1987",
+    "capValue": 21
+  },
+  "mharris": {
+    "fantasyTeam": "1987",
+    "capValue": 16
+  },
+  "alcantara": {
+    "fantasyTeam": "1987",
+    "capValue": 18
+  },
+  "nola": {
+    "fantasyTeam": "1987",
+    "capValue": 15
+  },
+  "skenes": {
+    "fantasyTeam": "1987",
+    "capValue": 11
+  },
+  "mmiller": {
+    "fantasyTeam": "1987",
+    "capValue": 10
+  },
+  "strider": {
+    "fantasyTeam": "1987",
+    "capValue": 13
+  },
+  "chourio": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 16
+  },
+  "fried": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 18
+  },
+  "imanaga": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 19
+  },
+  "tucker": {
+    "fantasyTeam": "Ethe",
+    "capValue": 23
+  },
+  "yamamoto": {
+    "fantasyTeam": "Ethe",
+    "capValue": 18
+  },
+  "arozarena": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 23
+  },
+  "trout": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 25
+  },
+  "zwheeler": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 21
+  },
+  "burnes": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 12
+  },
+  "glasnow": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 16
+  },
+  "carroll": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 16
+  },
+  "ozuna": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 9
+  },
+  "bwitt": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 17
+  },
+  "yordan": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 18
+  },
+  "ghenderson": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 16
+  },
+  "soto": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 18
+  },
+  "lindor": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 20
+  },
+  "sale": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 23
+  },
+  "holmes": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 9
+  },
+  "tturner": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 21
+  },
+  "betts": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 25
+  },
+  "seager": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 24
+  },
+  "cease": {
+    "fantasyTeam": "Warriors",
+    "capValue": 21
+  },
+  "gausman": {
+    "fantasyTeam": "Warriors",
+    "capValue": 18
+  },
+  "skubal": {
+    "fantasyTeam": "Warriors",
+    "capValue": 15
+  },
+  "bednar": {
+    "fantasyTeam": "Warriors",
+    "capValue": 17
+  },
+  "bieber": {
+    "fantasyTeam": "Warriors",
+    "capValue": 11
+  },
+  "gcole": {
+    "fantasyTeam": "Scambino",
+    "capValue": 25
+  },
+  "hader": {
+    "fantasyTeam": "Scambino",
+    "capValue": 19
+  },
+  "ronaldacunajr": {
+    "fantasyTeam": "1987",
+    "capValue": 18
+  },
+  "oneilcruz": {
+    "fantasyTeam": "1987",
+    "capValue": 16
+  },
+  "tylersoderstrom": {
+    "fantasyTeam": "1987",
+    "capValue": 11
+  },
+  "jordanwalker": {
+    "fantasyTeam": "1987",
+    "capValue": 8
+  },
+  "jjwetherholt": {
+    "fantasyTeam": "1987",
+    "capValue": 14
+  },
+  "jaccaglianone": {
+    "fantasyTeam": "1987",
+    "capValue": 8
+  },
+  "coltoncowser": {
+    "fantasyTeam": "1987",
+    "capValue": 10
+  },
+  "junghoolee": {
+    "fantasyTeam": "1987",
+    "capValue": 6
+  },
+  "noelvimarte": {
+    "fantasyTeam": "1987",
+    "capValue": 5
+  },
+  "wyattlangford": {
+    "fantasyTeam": "1987",
+    "capValue": 15
+  },
+  "aidanmiller": {
+    "fantasyTeam": "1987",
+    "capValue": 6
+  },
+  "coltemerson": {
+    "fantasyTeam": "1987",
+    "capValue": 9
+  },
+  "kodaisenga": {
+    "fantasyTeam": "1987",
+    "capValue": 14
+  },
+  "gavinwilliams": {
+    "fantasyTeam": "1987",
+    "capValue": 14
+  },
+  "tannerbibee": {
+    "fantasyTeam": "1987",
+    "capValue": 15
+  },
+  "kyleharrison": {
+    "fantasyTeam": "1987",
+    "capValue": 8
+  },
+  "jacobmisiorowski": {
+    "fantasyTeam": "1987",
+    "capValue": 5
+  },
+  "kumarrocker": {
+    "fantasyTeam": "1987",
+    "capValue": 2
+  },
+  "trevorrogers": {
+    "fantasyTeam": "1987",
+    "capValue": 17
+  },
+  "josesoriano": {
+    "fantasyTeam": "1987",
+    "capValue": 4
+  },
+  "joemusgrove": {
+    "fantasyTeam": "1987",
+    "capValue": 9
+  },
+  "dansbyswanson": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 16
+  },
+  "justincrawford": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 14
+  },
+  "adolisgarcia": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 13
+  },
+  "andypages": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 12
+  },
+  "willyadames": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 19
+  },
+  "ajgarcia": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 1
+  },
+  "lawrencebutler": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 18
+  },
+  "tylerbell": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 1
+  },
+  "hunterbrown": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 14
+  },
+  "rynenelson": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 11
+  },
+  "michaelwacha": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 8
+  },
+  "emiliopagan": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 9
+  },
+  "matthewboyd": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 12
+  },
+  "tylerbremner": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 1
+  },
+  "connellyearly": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 11
+  },
+  "merrillkelly": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 16
+  },
+  "davidpeterson": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 14
+  },
+  "jamesontaillon": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 7
+  },
+  "treyyesavage": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 17
+  },
+  "trevormegill": {
+    "fantasyTeam": "Bill Buff Boys",
+    "capValue": 14
+  },
+  "geraldoperdomo": {
+    "fantasyTeam": "Ethe",
+    "capValue": 12
+  },
+  "juliorodriguez": {
+    "fantasyTeam": "Ethe",
+    "capValue": 22
+  },
+  "georgespringer": {
+    "fantasyTeam": "Ethe",
+    "capValue": 17
+  },
+  "rafaeldevers": {
+    "fantasyTeam": "Ethe",
+    "capValue": 19
+  },
+  "christianyelich": {
+    "fantasyTeam": "Ethe",
+    "capValue": 17
+  },
+  "masynwinn": {
+    "fantasyTeam": "Ethe",
+    "capValue": 10
+  },
+  "joshuabaez": {
+    "fantasyTeam": "Ethe",
+    "capValue": 7
+  },
+  "daylenlile": {
+    "fantasyTeam": "Ethe",
+    "capValue": 13
+  },
+  "eduardoquintero": {
+    "fantasyTeam": "Ethe",
+    "capValue": 7
+  },
+  "rochcholowsky": {
+    "fantasyTeam": "Ethe",
+    "capValue": 11
+  },
+  "seiyasuzuki": {
+    "fantasyTeam": "Ethe",
+    "capValue": 19
+  },
+  "shanebaz": {
+    "fantasyTeam": "Ethe",
+    "capValue": 14
+  },
+  "tajbradley": {
+    "fantasyTeam": "Ethe",
+    "capValue": 5
+  },
+  "sonnygray": {
+    "fantasyTeam": "Ethe",
+    "capValue": 17
+  },
+  "nickpivetta": {
+    "fantasyTeam": "Ethe",
+    "capValue": 16
+  },
+  "jhoanduran": {
+    "fantasyTeam": "Ethe",
+    "capValue": 16
+  },
+  "joseberrios": {
+    "fantasyTeam": "Ethe",
+    "capValue": 4
+  },
+  "adrianhouser": {
+    "fantasyTeam": "Ethe",
+    "capValue": 6
+  },
+  "jacksonflora": {
+    "fantasyTeam": "Ethe",
+    "capValue": 4
+  },
+  "nicklodolo": {
+    "fantasyTeam": "Ethe",
+    "capValue": 16
+  },
+  "willwarren": {
+    "fantasyTeam": "Ethe",
+    "capValue": 12
+  },
+  "braxtonashcraft": {
+    "fantasyTeam": "Ethe",
+    "capValue": 9
+  },
+  "reiddetmers": {
+    "fantasyTeam": "Ethe",
+    "capValue": 6
+  },
+  "kenleyjansen": {
+    "fantasyTeam": "Ethe",
+    "capValue": 8
+  },
+  "paytontolle": {
+    "fantasyTeam": "Ethe",
+    "capValue": 12
+  },
+  "bobichette": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 20
+  },
+  "kerrycarpenter": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 7
+  },
+  "taylorward": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 17
+  },
+  "joshualowe": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 5
+  },
+  "kylestowers": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 12
+  },
+  "jorgepolanco": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 7
+  },
+  "brycerainer": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 5
+  },
+  "edwardflorentino": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 6
+  },
+  "lazaromontes": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 3
+  },
+  "garrettcrochet": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 15
+  },
+  "mitchkeller": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 6
+  },
+  "mikesoroka": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 10
+  },
+  "jacobdegrom": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 23
+  },
+  "raiseliglesias": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 10
+  },
+  "walkerbuehler": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 4
+  },
+  "dustinmay": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 6
+  },
+  "justinverlander": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 7
+  },
+  "stevenmatz": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 2
+  },
+  "robertsuarez": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 2
+  },
+  "ryanwalker": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 8
+  },
+  "travissykora": {
+    "fantasyTeam": "Chico Bail Bonds",
+    "capValue": 1
+  },
+  "zacharyneto": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 14
+  },
+  "wilyerabreu": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 7
+  },
+  "teoscarhernandez": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 18
+  },
+  "ramonlaureano": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 12
+  },
+  "franklinarias": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 7
+  },
+  "joshhsmith": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 4
+  },
+  "jettwilliams": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 2
+  },
+  "daultonvarsho": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 17
+  },
+  "trentgrisham": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 8
+  },
+  "grantholmes": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 15
+  },
+  "michaelking": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 20
+  },
+  "jackleiter": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 11
+  },
+  "maxscherzer": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 3
+  },
+  "andresmunoz": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 17
+  },
+  "brayanbello": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 10
+  },
+  "loganhenderson": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 12
+  },
+  "cristianjavier": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 9
+  },
+  "shanemcclanahan": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 16
+  },
+  "ryanpepiot": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 18
+  },
+  "bradysinger": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 11
+  },
+  "ryansloan": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 8
+  },
+  "ajsmithshawver": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 2
+  },
+  "blakesnell": {
+    "fantasyTeam": "Goodfellas ( Justin)",
+    "capValue": 24
+  },
+  "cjabrams": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 17
+  },
+  "luisrobert": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 16
+  },
+  "jameswood": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 16
+  },
+  "carloscorrea": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 14
+  },
+  "daxkilby": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 1
+  },
+  "evancarter": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 10
+  },
+  "denzelclarke": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 2
+  },
+  "jakobmarsee": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 16
+  },
+  "ceddannerafaela": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 13
+  },
+  "ivanherrera": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 11
+  },
+  "logangilbert": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 17
+  },
+  "georgekirby": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 16
+  },
+  "euryperez": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 15
+  },
+  "coleragans": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 20
+  },
+  "emmetsheehan": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 18
+  },
+  "petefairbanks": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 9
+  },
+  "mickabel": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 11
+  },
+  "liamdoyle": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 5
+  },
+  "huntergreene": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 16
+  },
+  "jaredjones": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 9
+  },
+  "parkermessick": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 12
+  },
+  "ryanweathers": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 14
+  },
+  "danielpalencia": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 15
+  },
+  "dennissantana": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 8
+  },
+  "kadeanderson": {
+    "fantasyTeam": "Mattliny Mashers",
+    "capValue": 12
+  },
+  "chasedelauter": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 6
+  },
+  "aaronjudge": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 21
+  },
+  "fernandotatisjr": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 20
+  },
+  "justinlebron": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 10
+  },
+  "carsonbenge": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 15
+  },
+  "jacobwilson": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 11
+  },
+  "eliwillits": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 1
+  },
+  "chaseburns": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 8
+  },
+  "jesusluzardo": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 17
+  },
+  "joeryan": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 18
+  },
+  "randyvasquez": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 10
+  },
+  "lucaserceg": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 10
+  },
+  "michaelburrows": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 13
+  },
+  "jackflaherty": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 14
+  },
+  "didierfuentes": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 11
+  },
+  "tatsuyaimai": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 17
+  },
+  "carlosrodon": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 18
+  },
+  "jeffhoffman": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 10
+  },
+  "codyponce": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 9
+  },
+  "jacksonjobe": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 7
+  },
+  "pablolopez": {
+    "fantasyTeam": "MoneyBallers",
+    "capValue": 6
+  },
+  "jarrenduran": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 15
+  },
+  "rileygreene": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 16
+  },
+  "heliotramos": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 14
+  },
+  "zacveen": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 9
+  },
+  "moisesballesteros": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 14
+  },
+  "bryceeldridge": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 13
+  },
+  "coltkeith": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 9
+  },
+  "jesusmade": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 6
+  },
+  "andrewabbott": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 6
+  },
+  "bubbachandler": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 15
+  },
+  "mackenziegore": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 17
+  },
+  "caseymize": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 11
+  },
+  "frambervaldez": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 18
+  },
+  "edwindiaz": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 18
+  },
+  "chrisbassitt": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 8
+  },
+  "kylebradish": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 5
+  },
+  "benbrown": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 9
+  },
+  "noahcameron": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 12
+  },
+  "sladececconi": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 11
+  },
+  "nathaneovaldi": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 17
+  },
+  "brodyhopkins": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 2
+  },
+  "quinnpriester": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 10
+  },
+  "jrritchie": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 1
+  },
+  "graysonrodriguez": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 15
+  },
+  "riverryan": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 7
+  },
+  "jeffreysprings": {
+    "fantasyTeam": "Outinthefield",
+    "capValue": 4
+  },
+  "brandonnimmo": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 16
+  },
+  "bryanreynolds": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 18
+  },
+  "mattwallner": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 11
+  },
+  "chandlersimpson": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 10
+  },
+  "dominiccanzone": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 11
+  },
+  "ethanholliday": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 5
+  },
+  "noahmiller": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 10
+  },
+  "jassondominguez": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 15
+  },
+  "maxmeyer": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 12
+  },
+  "drewrasmussen": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 10
+  },
+  "cameronschlittler": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 18
+  },
+  "luisseverino": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 10
+  },
+  "brandonwoodruff": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 17
+  },
+  "cadesmith": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 17
+  },
+  "angelbastardo": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 5
+  },
+  "luiscastillo": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 20
+  },
+  "brandonpfaadt": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 9
+  },
+  "brandonsproat": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 8
+  },
+  "bryanwoo": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 19
+  },
+  "bryanabreu": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 4
+  },
+  "griffinjax": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 7
+  },
+  "devinwilliams": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 14
+  },
+  "clarkeschmidt": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 6
+  },
+  "shanesmith": {
+    "fantasyTeam": "Rookie Scum",
+    "capValue": 14
+  },
+  "jeremypena": {
+    "fantasyTeam": "Warriors",
+    "capValue": 18
+  },
+  "joadell": {
+    "fantasyTeam": "Warriors",
+    "capValue": 16
+  },
+  "ianhapp": {
+    "fantasyTeam": "Warriors",
+    "capValue": 16
+  },
+  "stevenkwan": {
+    "fantasyTeam": "Warriors",
+    "capValue": 14
+  },
+  "yandydiaz": {
+    "fantasyTeam": "Warriors",
+    "capValue": 16
+  },
+  "mickeymoniak": {
+    "fantasyTeam": "Warriors",
+    "capValue": 13
+  },
+  "tyleroneill": {
+    "fantasyTeam": "Warriors",
+    "capValue": 11
+  },
+  "camsmith": {
+    "fantasyTeam": "Warriors",
+    "capValue": 9
+  },
+  "anthonyvolpe": {
+    "fantasyTeam": "Warriors",
+    "capValue": 8
+  },
+  "brentrooker": {
+    "fantasyTeam": "Warriors",
+    "capValue": 11
+  },
+  "georgelombard": {
+    "fantasyTeam": "Warriors",
+    "capValue": 8
+  },
+  "carsonwilliams": {
+    "fantasyTeam": "Warriors",
+    "capValue": 10
+  },
+  "ryanwaldschmidt": {
+    "fantasyTeam": "Warriors",
+    "capValue": 8
+  },
+  "bryceelder": {
+    "fantasyTeam": "Warriors",
+    "capValue": 10
+  },
+  "zacgallen": {
+    "fantasyTeam": "Warriors",
+    "capValue": 15
+  },
+  "cadecavalli": {
+    "fantasyTeam": "Warriors",
+    "capValue": 9
+  },
+  "matthewliberatore": {
+    "fantasyTeam": "Warriors",
+    "capValue": 12
+  },
+  "rokisasaki": {
+    "fantasyTeam": "Warriors",
+    "capValue": 16
+  },
+  "rangersuarez": {
+    "fantasyTeam": "Warriors",
+    "capValue": 15
+  },
+  "cadehorton": {
+    "fantasyTeam": "Warriors",
+    "capValue": 5
+  },
+  "brycemiller": {
+    "fantasyTeam": "Warriors",
+    "capValue": 11
+  },
+  "spencerschwellenbach": {
+    "fantasyTeam": "Warriors",
+    "capValue": 14
+  },
+  "justinsteele": {
+    "fantasyTeam": "Warriors",
+    "capValue": 9
+  },
+  "robbysnelling": {
+    "fantasyTeam": "Warriors",
+    "capValue": 9
+  },
+  "kevinmcgonigle": {
+    "fantasyTeam": "Scambino",
+    "capValue": 7
+  },
+  "romananthony": {
+    "fantasyTeam": "Scambino",
+    "capValue": 14
+  },
+  "owencaissie": {
+    "fantasyTeam": "Scambino",
+    "capValue": 8
+  },
+  "joshbell": {
+    "fantasyTeam": "Scambino",
+    "capValue": 10
+  },
+  "giancarlostanton": {
+    "fantasyTeam": "Scambino",
+    "capValue": 12
+  },
+  "colsonmontgomery": {
+    "fantasyTeam": "Scambino",
+    "capValue": 18
+  },
+  "luispena": {
+    "fantasyTeam": "Scambino",
+    "capValue": 12
+  },
+  "josuedepaula": {
+    "fantasyTeam": "Scambino",
+    "capValue": 8
+  },
+  "dylancrews": {
+    "fantasyTeam": "Scambino",
+    "capValue": 13
+  },
+  "ezequieltovar": {
+    "fantasyTeam": "Scambino",
+    "capValue": 16
+  },
+  "spencerjones": {
+    "fantasyTeam": "Scambino",
+    "capValue": 8
+  },
+  "emmanuelrodriguez": {
+    "fantasyTeam": "Scambino",
+    "capValue": 9
+  },
+  "maxclark": {
+    "fantasyTeam": "Scambino",
+    "capValue": 13
+  },
+  "walkerjenkins": {
+    "fantasyTeam": "Scambino",
+    "capValue": 15
+  },
+  "sebastianwalcott": {
+    "fantasyTeam": "Scambino",
+    "capValue": 13
+  },
+  "emersonhancock": {
+    "fantasyTeam": "Scambino",
+    "capValue": 10
+  },
+  "rhettlowder": {
+    "fantasyTeam": "Scambino",
+    "capValue": 5
+  },
+  "nolanmclean": {
+    "fantasyTeam": "Scambino",
+    "capValue": 18
+  },
+  "andrewpainter": {
+    "fantasyTeam": "Scambino",
+    "capValue": 17
+  },
+  "eduardorodriguez": {
+    "fantasyTeam": "Scambino",
+    "capValue": 10
+  },
+  "aroldischapman": {
+    "fantasyTeam": "Scambino",
+    "capValue": 8
+  },
+  "aaroncivale": {
+    "fantasyTeam": "Scambino",
+    "capValue": 10
+  },
+  "sethhernandez": {
+    "fantasyTeam": "Scambino",
+    "capValue": 1
+  },
+  "carloslagrange": {
+    "fantasyTeam": "Scambino",
+    "capValue": 11
+  },
+  "elmerrodriguezcruz": {
+    "fantasyTeam": "Scambino",
+    "capValue": 1
+  },
+  "noahschultz": {
+    "fantasyTeam": "Scambino",
+    "capValue": 11
+  },
+  "jonahtong": {
+    "fantasyTeam": "Scambino",
+    "capValue": 9
+  },
+  "thomaswhite": {
+    "fantasyTeam": "Scambino",
+    "capValue": 13
+  }
+};
+
+    const KEY = 'scam-league-rosters';
+    try {
+      const store = {
+        savedAt: new Date().toISOString(),
+        data: rosterData
+      };
+      localStorage.setItem(KEY, JSON.stringify(store));
+      
+      let html = '<p class="success">✓ SUCCESS!</p><pre>';
+      html += 'Rosters loaded:\n\n';
+      
+      const teams = {};
+      Object.values(rosterData).forEach(entry => {
+        const team = entry.fantasyTeam;
+        teams[team] = (teams[team] || 0) + 1;
+      });
+      
+      Object.entries(teams).sort().forEach(([team, count]) => {
+        html += `${team}: ${count} players\n`;
+      });
+      
+      html += `\nTotal: ${Object.keys(rosterData).length} players`;
+      html += '</pre><p><a href="/">← Back to Scam League</a></p>';
+      
+      document.getElementById('status').innerHTML = html;
+    } catch (e) {
+      document.getElementById('status').innerHTML = 
+        '<p style="color: #f00;">ERROR: ' + e.message + '</p>';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Load Rosters</title></head>
+<body>
+<h1>Loading...</h1>
+<script>
+const rosterData = EOF
+cat correct-roster-data.json >> public/load-rosters.html
+cat >> public/load-rosters.html << 'EOF'
+;
+localStorage.setItem('scam-league-rosters', JSON.stringify({
+  savedAt: new Date().toISOString(),
+  data: rosterData
+}));
+alert('✓ Rosters loaded! Refreshing app...');
+window.location = '/';
+</script>
+</body>
+</html>

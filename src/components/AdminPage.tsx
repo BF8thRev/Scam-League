@@ -21,26 +21,50 @@ interface PlayerRow {
 
 function buildInitialRows(): PlayerRow[] {
   const saved = loadRosters();
-  return PLAYERS.map(p => {
+  const baseRows: PlayerRow[] = PLAYERS.map(p => {
     const override = saved?.data[p.id];
+    const ft = override?.fantasyTeam ?? p.fantasyTeam ?? '';
+    const isFa = ft === 'FA';
     return {
       id: p.id,
       name: p.name,
       position: p.position,
       mlbTeam: p.team,
-      fantasyTeam: override?.fantasyTeam ?? p.fantasyTeam ?? '',
-      capValue:    override?.capValue    != null ? String(override.capValue)
-                 : p.capValue            != null ? String(p.capValue) : '',
+      fantasyTeam: ft,
+      capValue: isFa ? 'FA'
+              : override?.capValue != null ? String(override.capValue)
+              : p.capValue         != null ? String(p.capValue) : '',
       matched: false,
     };
   });
+  // Restore any extra rows (Excel players not in PLAYERS) from saved data
+  if (saved) {
+    const knownIds = new Set(PLAYERS.map(p => p.id));
+    for (const [id, entry] of Object.entries(saved.data)) {
+      if (!knownIds.has(id) && id.startsWith('excel_')) {
+        const ft = entry.fantasyTeam ?? '';
+        baseRows.push({
+          id,
+          name: id.replace(/^excel_/, '').replace(/_/g, ' '),
+          position: '?',
+          mlbTeam: '?',
+          fantasyTeam: ft,
+          capValue: ft === 'FA' ? 'FA' : entry.capValue != null ? String(entry.capValue) : '',
+          matched: false,
+        });
+      }
+    }
+  }
+  return baseRows;
 }
 
 function rowsToStoreData(rows: PlayerRow[]) {
   const out: Record<string, { fantasyTeam?: string; capValue?: number }> = {};
   for (const r of rows) {
     const ft = r.fantasyTeam.trim();
-    const cv = r.capValue.trim() ? parseFloat(r.capValue) : undefined;
+    const rawCap = r.capValue.trim();
+    const isFa = rawCap.toUpperCase() === 'FA' || ft === 'FA';
+    const cv = (!isFa && rawCap) ? parseFloat(rawCap) : undefined;
     if (ft || (cv != null && !isNaN(cv))) {
       out[r.id] = {
         ...(ft                          ? { fantasyTeam: ft }  : {}),
@@ -68,9 +92,18 @@ function normalizeName(s: string) {
     .toLowerCase();
 }
 
-const PLAYER_COLS = ['playername', 'player', 'name'];
+// Strip trailing " POS TEAM" suffix from Excel player names like "Cal Raleigh C SEA"
+// Handles formats: "Name C SEA", "Name SP NYY", "Name 2B/OF ATH", "Name OF Unaffiliated"
+const PLAYER_SUFFIX_RE = /\s+(?:c|1b|2b|3b|ss|of|lf|rf|cf|sp|rp|dh|p|ut|if)(?:\/\w+)?\s+\S+$/i;
+
+function stripPlayerSuffix(name: string): string {
+  return name.replace(PLAYER_SUFFIX_RE, '').trim();
+}
+
+const PLAYER_COLS = ['players', 'playername', 'player', 'name'];
 const TEAM_COLS   = ['fantasyteam', 'fantasyowner', 'fantasyleagueteam', 'owner', 'team'];
-const CAP_COLS    = ['capvalue', 'cap value', 'cap', 'salary', 'value', 'contract'];
+const CAP_COLS    = ['cappoints', 'capvalue', 'cap value', 'cap', 'salary', 'value', 'contract'];
+const POS_COLS    = ['pos', 'position', 'positions'];
 
 function pickCol(headers: string[], candidates: string[]) {
   for (const h of headers) {
@@ -92,20 +125,34 @@ function cellStr(v: ExcelJS.CellValue): string {
   return String(v);
 }
 
-// Convert an ExcelJS worksheet to an array of plain objects (like SheetJS sheet_to_json).
+const ALL_KNOWN_COLS = [...PLAYER_COLS, ...TEAM_COLS, ...CAP_COLS, ...POS_COLS];
+
+function isHeaderRow(vals: string[]): boolean {
+  const norm = vals.map(v => v.toLowerCase().replace(/[^a-z]/g, ''));
+  return norm.some(v => ALL_KNOWN_COLS.includes(v));
+}
+
+// Convert an ExcelJS worksheet to an array of plain objects.
+// Skips leading title/summary rows until it finds a recognizable header row.
 function wsToJson(sheet: ExcelJS.Worksheet): Record<string, string>[] {
-  const out: Record<string, string>[] = [];
-  let headers: string[] = [];
+  const allRows: string[][] = [];
   sheet.eachRow(row => {
     const vals = (row.values as ExcelJS.CellValue[]).slice(1); // 1-indexed → 0-indexed
-    if (!headers.length) {
-      headers = vals.map(v => cellStr(v).trim());
-      return;
-    }
-    const obj: Record<string, string> = {};
-    headers.forEach((h, i) => { if (h) obj[h] = cellStr(vals[i]).trim(); });
-    if (Object.values(obj).some(v => v !== '')) out.push(obj);
+    allRows.push(vals.map(v => cellStr(v).trim()));
   });
+
+  // Find the first row that contains a known column name
+  let headerIdx = allRows.findIndex(row => isHeaderRow(row));
+  if (headerIdx === -1) headerIdx = 0; // fallback: use first row
+
+  const headers = allRows[headerIdx];
+  const out: Record<string, string>[] = [];
+  for (let i = headerIdx + 1; i < allRows.length; i++) {
+    const vals = allRows[i];
+    const obj: Record<string, string> = {};
+    headers.forEach((h, j) => { if (h) obj[h] = vals[j] ?? ''; });
+    if (Object.values(obj).some(v => v !== '')) out.push(obj);
+  }
   return out;
 }
 
@@ -139,31 +186,39 @@ function parseCSVText(text: string): Record<string, string>[] {
 }
 
 type ParseResult = {
-  rows: Array<{ name: string; fantasyTeam: string; capValue: string }>;
+  rows: Array<{ name: string; fantasyTeam: string; capValue: string; position: string }>;
   colMap: { player: string | null; team: string | null; cap: string | null };
   totalRows: number;
   mode: 'single-sheet' | 'multi-sheet';
+  rawHeaders: string[];
+  sheetNames: string[];
 };
 
 async function parseFile(data: ArrayBuffer, fileName: string): Promise<ParseResult> {
   const allRows: ParseResult['rows'] = [];
   let detected: ParseResult['colMap'] = { player: null, team: null, cap: null };
+  let rawHeaders: string[] = [];
+  let sheetNames: string[] = [];
 
   function extractRows(raw: Record<string, string>[], teamOverride: string | null) {
     if (!raw.length) return;
     const headers   = Object.keys(raw[0]);
+    if (!rawHeaders.length) rawHeaders = headers; // capture first sheet's headers for diagnostics
     const playerCol = pickCol(headers, PLAYER_COLS);
     const teamCol   = teamOverride ? null : pickCol(headers, TEAM_COLS);
     const capCol    = pickCol(headers, CAP_COLS);
+    const posCol    = pickCol(headers, POS_COLS);
     if (!detected.player && playerCol) detected = { player: playerCol, team: teamCol, cap: capCol };
     if (!playerCol) return;
     for (const r of raw) {
-      const name = String(r[playerCol] ?? '').trim();
-      if (!name) continue;
+      const rawName = String(r[playerCol] ?? '').trim();
+      if (!rawName) continue;
+      const name = stripPlayerSuffix(rawName); // strip " POS TEAM" suffix e.g. "Cal Raleigh C SEA" → "Cal Raleigh"
       allRows.push({
         name,
         fantasyTeam: teamOverride ?? (teamCol ? String(r[teamCol] ?? '').trim() : ''),
         capValue:    capCol ? String(r[capCol] ?? '').replace(/[^0-9.]/g, '') : '',
+        position:    posCol ? String(r[posCol] ?? '').trim() : '',
       });
     }
   }
@@ -171,13 +226,14 @@ async function parseFile(data: ArrayBuffer, fileName: string): Promise<ParseResu
   if (/\.csv$/i.test(fileName)) {
     const text = new TextDecoder('utf-8').decode(data);
     extractRows(parseCSVText(text), null);
-    return { rows: allRows, colMap: detected, totalRows: allRows.length, mode: 'single-sheet' };
+    return { rows: allRows, colMap: detected, totalRows: allRows.length, mode: 'single-sheet', rawHeaders, sheetNames };
   }
 
   // xlsx — import ExcelJS lazily so the main bundle stays lean
   const ExcelJS = (await import('exceljs')).default;
   const wb = new ExcelJS.Workbook();
   await wb.xlsx.load(data);
+  sheetNames = wb.worksheets.map(ws => ws.name);
   const isMulti = wb.worksheets.length > 1;
 
   if (isMulti) {
@@ -188,13 +244,16 @@ async function parseFile(data: ArrayBuffer, fileName: string): Promise<ParseResu
   }
 
   return { rows: allRows, colMap: detected, totalRows: allRows.length,
-           mode: isMulti ? 'multi-sheet' : 'single-sheet' };
+           mode: isMulti ? 'multi-sheet' : 'single-sheet', rawHeaders, sheetNames };
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function AdminPage({ onClose }: { onClose: () => void }) {
   const [tableRows, setTableRows] = useState<PlayerRow[]>(buildInitialRows);
+  const tableRowsRef = useRef(tableRows);
+  useEffect(() => { tableRowsRef.current = tableRows; }, [tableRows]);
+
   const [dragOver, setDragOver]       = useState(false);
   const [fileName, setFileName]       = useState<string | null>(null);
   const [colMap, setColMap]           = useState<{ player: string | null; team: string | null; cap: string | null } | null>(null);
@@ -211,15 +270,36 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
     if (!isSupabaseConfigured) return;
     fetchRostersFromSupabase().then(store => {
       if (!store) return;
-      setTableRows(prev => prev.map(r => {
-        const ov = store.data[r.id];
-        if (!ov) return r;
-        return {
-          ...r,
-          fantasyTeam: ov.fantasyTeam ?? r.fantasyTeam,
-          capValue:    ov.capValue    != null ? String(ov.capValue) : r.capValue,
-        };
-      }));
+      setTableRows(prev => {
+        const knownIds = new Set(prev.map(r => r.id));
+        const next = prev.map(r => {
+          const ov = store.data[r.id];
+          if (!ov) return r;
+          const ft = ov.fantasyTeam ?? r.fantasyTeam;
+          const isFa = ft === 'FA';
+          return {
+            ...r,
+            fantasyTeam: ft,
+            capValue: isFa ? 'FA' : ov.capValue != null ? String(ov.capValue) : r.capValue,
+          };
+        });
+        // Re-add extra rows (Excel players not in PLAYERS) from Supabase
+        for (const [id, entry] of Object.entries(store.data)) {
+          if (!knownIds.has(id) && id.startsWith('excel_')) {
+            const ft = entry.fantasyTeam ?? '';
+            next.push({
+              id,
+              name: id.replace(/^excel_/, '').replace(/_/g, ' '),
+              position: '?',
+              mlbTeam: '?',
+              fantasyTeam: ft,
+              capValue: ft === 'FA' ? 'FA' : entry.capValue != null ? String(entry.capValue) : '',
+              matched: false,
+            });
+          }
+        }
+        return next;
+      });
       setSavedAt(store.savedAt);
     }).catch(() => {/* silently fall back to localStorage */});
   }, []);
@@ -261,41 +341,79 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
 
     file.arrayBuffer().then(async buf => {
       try {
-        const { rows, colMap: cm, totalRows } = await parseFile(buf, file.name);
+        const { rows, colMap: cm, totalRows, rawHeaders, sheetNames } = await parseFile(buf, file.name);
         setColMap(cm);
 
         if (!cm.player) {
-          setParseMsg({ ok: false, text: 'Could not find a player name column. Rename a column to "Player" or "Name".' });
+          const headerInfo = rawHeaders.length
+            ? ` Found columns: [${rawHeaders.join(', ')}]`
+            : sheetNames.length
+            ? ` Found sheets: [${sheetNames.join(', ')}] — check first sheet has a header row.`
+            : ' File appears empty.';
+          setParseMsg({ ok: false, text: `Could not find a player name column. Rename a column to "Player" or "Name".${headerInfo}` });
           return;
         }
 
-        let matched   = 0;
-        const unmatched: string[] = [];
+        if (totalRows === 0) {
+          const headerInfo = rawHeaders.length ? ` Columns found: [${rawHeaders.join(', ')}]` : '';
+          setParseMsg({ ok: false, text: `Player column "${cm.player}" was found but no data rows were parsed.${headerInfo}` });
+          return;
+        }
 
-        setTableRows(prev => {
-          const next = prev.map(r => ({ ...r, matched: false }));
-          for (const { name, fantasyTeam, capValue } of rows) {
-            const needle = normalizeName(name);
-            const i = next.findIndex(r => normalizeName(r.name) === needle);
-            if (i === -1) { unmatched.push(name); continue; }
+        // ── Compute new table state synchronously ──────────────────────────
+        // Start from PLAYERS-only rows (strip any stale excel_ rows from prior uploads)
+        const basePlayers = tableRowsRef.current.filter(r => !r.id.startsWith('excel_'));
+        const next = basePlayers.map(r => ({ ...r, matched: false }));
+
+        let matched  = 0;
+        let addedNew = 0;
+        let markedFa = 0;
+
+        for (const { name, fantasyTeam, capValue, position } of rows) {
+          const needle = normalizeName(name);
+          const i = next.findIndex(r => normalizeName(r.name) === needle);
+          if (i === -1) {
+            // Not in master PLAYERS list — add as extra row
+            const newId = `excel_${needle.replace(/\s+/g, '_')}`;
+            next.push({
+              id: newId,
+              name,
+              position: position || '?',
+              mlbTeam: '?',
+              fantasyTeam: fantasyTeam || '',
+              capValue: capValue || '',
+              matched: true,
+            });
+            addedNew++;
+          } else {
             if (fantasyTeam) next[i].fantasyTeam = fantasyTeam;
             if (capValue)    next[i].capValue    = capValue;
+            if (position && next[i].position === '?') next[i].position = position;
             next[i].matched = true;
             matched++;
           }
-          // Auto-save immediately after file parse (don't wait for debounce)
-          setTimeout(() => {
-            saveRosters(rowsToStoreData(next))
-              .then(({ savedAt: ts }) => setSavedAt(ts))
-              .catch(() => {});
-          }, 0);
-          return next;
-        });
+        }
 
-        const warn = unmatched.length
-          ? ` No match for: ${unmatched.slice(0, 3).join(', ')}${unmatched.length > 3 ? ` +${unmatched.length - 3} more` : ''}.`
-          : '';
-        setParseMsg({ ok: unmatched.length === 0, text: `Matched ${matched} of ${totalRows} rows.${warn}` });
+        // Players NOT found in the Excel = Free Agents
+        for (const r of next) {
+          if (!r.matched) {
+            r.fantasyTeam = 'FA';
+            r.capValue    = 'FA';
+            markedFa++;
+          }
+        }
+
+        setTableRows(next);
+
+        // Auto-save immediately after file parse
+        saveRosters(rowsToStoreData(next))
+          .then(({ savedAt: ts }) => setSavedAt(ts))
+          .catch(() => {});
+
+        const parts: string[] = [`Matched ${matched} of ${totalRows} players from your roster.`];
+        if (addedNew)  parts.push(`Added ${addedNew} new (not in master list).`);
+        if (markedFa)  parts.push(`${markedFa} marked FA.`);
+        setParseMsg({ ok: matched > 0, text: parts.join(' ') });
       } catch (e) {
         setParseMsg({ ok: false, text: `Parse error: ${(e as Error).message}` });
       }
@@ -506,11 +624,20 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
                     </td>
                     <td style={{ padding: '5px 12px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                        <span style={{ color: '#374151', fontSize: '11px' }}>$</span>
+                        {row.capValue.toUpperCase() !== 'FA' && (
+                          <span style={{ color: '#374151', fontSize: '11px' }}>$</span>
+                        )}
                         <input
-                          type="number" value={row.capValue} placeholder="0" min={0}
+                          type="text"
+                          value={row.capValue}
+                          placeholder="0"
                           onChange={e => setTableRows(p => p.map(r => r.id === row.id ? { ...r, capValue: e.target.value, matched: false } : r))}
-                          style={{ width: '60px', background: 'transparent', border: 'none', borderBottom: '1px solid #1f2937', color: '#e5e7eb', fontSize: '13px', padding: '2px 4px', outline: 'none', fontFamily: 'monospace' }}
+                          style={{
+                            width: '60px', background: 'transparent', border: 'none',
+                            borderBottom: '1px solid #1f2937',
+                            color: row.capValue.toUpperCase() === 'FA' ? '#6b7280' : '#e5e7eb',
+                            fontSize: '13px', padding: '2px 4px', outline: 'none', fontFamily: 'monospace',
+                          }}
                         />
                       </div>
                     </td>

@@ -17,6 +17,7 @@ interface Props {
   onAdd: (player: BaseballPlayer) => void;
   onCapChange: (idx: number, cap: number) => void;
   onRemove: (idx: number) => void;
+  players?: BaseballPlayer[];
 }
 
 const LABEL_COLOR = {
@@ -24,7 +25,7 @@ const LABEL_COLOR = {
   emerald: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
 };
 
-export default function TradePanel({ label, color, slots, allUsedIds, onAdd, onCapChange, onRemove }: Props) {
+export default function TradePanel({ label, color, slots, allUsedIds, onAdd, onCapChange, onRemove, players }: Props) {
   const side = analyzeSide(slots);
   const totalDynSurplus = side.dynSurplus;
 
@@ -62,6 +63,7 @@ export default function TradePanel({ label, color, slots, allUsedIds, onAdd, onC
             usedIds={allUsedIds}
             onSelect={onAdd}
             placeholder="Add player…"
+            players={players}
           />
           <Plus size={13} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 pointer-events-none" />
         </div>

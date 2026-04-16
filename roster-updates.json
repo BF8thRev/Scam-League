@@ -1,0 +1,2414 @@
+{
+  "updates": {
+    "edc": {
+      "id": "edc",
+      "name": "Elly De La Cruz",
+      "position": "SS",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "1987",
+      "capValue": 21,
+      "excelName": "Elly De La Cruz",
+      "matchConfidence": "direct"
+    },
+    "mharris": {
+      "id": "mharris",
+      "name": "Michael Harris II",
+      "position": "OF",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "1987",
+      "capValue": 16,
+      "excelName": "Michael Harris",
+      "matchConfidence": "direct"
+    },
+    "alcantara": {
+      "id": "alcantara",
+      "name": "Sandy Alcantara",
+      "position": "SP",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "1987",
+      "capValue": 18,
+      "excelName": "Sandy Alcantara",
+      "matchConfidence": "direct"
+    },
+    "nola": {
+      "id": "nola",
+      "name": "Aaron Nola",
+      "position": "SP",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "1987",
+      "capValue": 15,
+      "excelName": "Aaron Nola",
+      "matchConfidence": "direct"
+    },
+    "skenes": {
+      "id": "skenes",
+      "name": "Paul Skenes",
+      "position": "SP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "1987",
+      "capValue": 11,
+      "excelName": "Paul Skenes",
+      "matchConfidence": "direct"
+    },
+    "mmiller": {
+      "id": "mmiller",
+      "name": "Mason Miller",
+      "position": "RP",
+      "mlbTeam": "OAK",
+      "fantasyTeam": "1987",
+      "capValue": 10,
+      "excelName": "Mason Miller",
+      "matchConfidence": "direct"
+    },
+    "strider": {
+      "id": "strider",
+      "name": "Spencer Strider",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "1987",
+      "capValue": 13,
+      "excelName": "Spencer Strider",
+      "matchConfidence": "direct"
+    },
+    "chourio": {
+      "id": "chourio",
+      "name": "Jackson Chourio",
+      "position": "OF",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 16,
+      "excelName": "Jackson Chourio",
+      "matchConfidence": "direct"
+    },
+    "fried": {
+      "id": "fried",
+      "name": "Max Fried",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 18,
+      "excelName": "Max Fried",
+      "matchConfidence": "direct"
+    },
+    "imanaga": {
+      "id": "imanaga",
+      "name": "Shota Imanaga",
+      "position": "SP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 19,
+      "excelName": "Shota Imanaga",
+      "matchConfidence": "direct"
+    },
+    "tucker": {
+      "id": "tucker",
+      "name": "Kyle Tucker",
+      "position": "OF",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Ethe",
+      "capValue": 23,
+      "excelName": "Kyle Tucker",
+      "matchConfidence": "direct"
+    },
+    "yamamoto": {
+      "id": "yamamoto",
+      "name": "Yoshinobu Yamamoto",
+      "position": "SP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Ethe",
+      "capValue": 18,
+      "excelName": "Yoshinobu Yamamoto",
+      "matchConfidence": "direct"
+    },
+    "arozarena": {
+      "id": "arozarena",
+      "name": "Randy Arozarena",
+      "position": "OF",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 23,
+      "excelName": "Randy Arozarena",
+      "matchConfidence": "direct"
+    },
+    "trout": {
+      "id": "trout",
+      "name": "Mike Trout",
+      "position": "OF",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 25,
+      "excelName": "Mike Trout",
+      "matchConfidence": "direct"
+    },
+    "zwheeler": {
+      "id": "zwheeler",
+      "name": "Zack Wheeler",
+      "position": "SP",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 21,
+      "excelName": "Zack Wheeler",
+      "matchConfidence": "direct"
+    },
+    "burnes": {
+      "id": "burnes",
+      "name": "Corbin Burnes",
+      "position": "SP",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 12,
+      "excelName": "Corbin Burnes",
+      "matchConfidence": "direct"
+    },
+    "glasnow": {
+      "id": "glasnow",
+      "name": "Tyler Glasnow",
+      "position": "SP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 16,
+      "excelName": "Tyler Glasnow",
+      "matchConfidence": "direct"
+    },
+    "carroll": {
+      "id": "carroll",
+      "name": "Corbin Carroll",
+      "position": "OF",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 16,
+      "excelName": "Corbin Carroll",
+      "matchConfidence": "direct"
+    },
+    "ozuna": {
+      "id": "ozuna",
+      "name": "Marcell Ozuna",
+      "position": "DH",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 9,
+      "excelName": "Marcell Ozuna",
+      "matchConfidence": "direct"
+    },
+    "bwitt": {
+      "id": "bwitt",
+      "name": "Bobby Witt Jr.",
+      "position": "SS",
+      "mlbTeam": "KC",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 17,
+      "excelName": "Bobby Witt",
+      "matchConfidence": "direct"
+    },
+    "yordan": {
+      "id": "yordan",
+      "name": "Yordan Alvarez",
+      "position": "OF",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 18,
+      "excelName": "Yordan Alvarez",
+      "matchConfidence": "direct"
+    },
+    "ghenderson": {
+      "id": "ghenderson",
+      "name": "Gunnar Henderson",
+      "position": "SS",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 16,
+      "excelName": "Gunnar Henderson",
+      "matchConfidence": "direct"
+    },
+    "soto": {
+      "id": "soto",
+      "name": "Juan Soto",
+      "position": "OF",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 18,
+      "excelName": "Juan Soto",
+      "matchConfidence": "direct"
+    },
+    "lindor": {
+      "id": "lindor",
+      "name": "Francisco Lindor",
+      "position": "SS",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 20,
+      "excelName": "Francisco Lindor",
+      "matchConfidence": "direct"
+    },
+    "sale": {
+      "id": "sale",
+      "name": "Chris Sale",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 23,
+      "excelName": "Chris Sale",
+      "matchConfidence": "direct"
+    },
+    "holmes": {
+      "id": "holmes",
+      "name": "Clay Holmes",
+      "position": "RP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 9,
+      "excelName": "Clay Holmes",
+      "matchConfidence": "direct"
+    },
+    "tturner": {
+      "id": "tturner",
+      "name": "Trea Turner",
+      "position": "SS",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 21,
+      "excelName": "Trea Turner",
+      "matchConfidence": "direct"
+    },
+    "betts": {
+      "id": "betts",
+      "name": "Mookie Betts",
+      "position": "OF",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 25,
+      "excelName": "Mookie Betts",
+      "matchConfidence": "direct"
+    },
+    "seager": {
+      "id": "seager",
+      "name": "Corey Seager",
+      "position": "SS",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 24,
+      "excelName": "Corey Seager",
+      "matchConfidence": "direct"
+    },
+    "cease": {
+      "id": "cease",
+      "name": "Dylan Cease",
+      "position": "SP",
+      "mlbTeam": "SD",
+      "fantasyTeam": "Warriors",
+      "capValue": 21,
+      "excelName": "Dylan Cease",
+      "matchConfidence": "direct"
+    },
+    "gausman": {
+      "id": "gausman",
+      "name": "Kevin Gausman",
+      "position": "SP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Warriors",
+      "capValue": 18,
+      "excelName": "Kevin Gausman",
+      "matchConfidence": "direct"
+    },
+    "skubal": {
+      "id": "skubal",
+      "name": "Tarik Skubal",
+      "position": "SP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Warriors",
+      "capValue": 15,
+      "excelName": "Tarik Skubal",
+      "matchConfidence": "direct"
+    },
+    "bednar": {
+      "id": "bednar",
+      "name": "David Bednar",
+      "position": "RP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Warriors",
+      "capValue": 17,
+      "excelName": "David Bednar",
+      "matchConfidence": "direct"
+    },
+    "bieber": {
+      "id": "bieber",
+      "name": "Shane Bieber",
+      "position": "SP",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "Warriors",
+      "capValue": 11,
+      "excelName": "Shane Bieber",
+      "matchConfidence": "direct"
+    },
+    "gcole": {
+      "id": "gcole",
+      "name": "Gerrit Cole",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Scambino",
+      "capValue": 25,
+      "excelName": "Gerrit Cole",
+      "matchConfidence": "direct"
+    },
+    "hader": {
+      "id": "hader",
+      "name": "Josh Hader",
+      "position": "RP",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Scambino",
+      "capValue": 19,
+      "excelName": "Josh Hader",
+      "matchConfidence": "direct"
+    }
+  },
+  "newPlayers": [
+    {
+      "name": "Ronald Acuna Jr.",
+      "position": "OF",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "1987",
+      "capValue": 18
+    },
+    {
+      "name": "Oneil Cruz",
+      "position": "OF",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "1987",
+      "capValue": 16
+    },
+    {
+      "name": "Tyler Soderstrom",
+      "position": "DH",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "1987",
+      "capValue": 11
+    },
+    {
+      "name": "Jordan Walker",
+      "position": "DH",
+      "mlbTeam": "STL",
+      "fantasyTeam": "1987",
+      "capValue": 8
+    },
+    {
+      "name": "JJ Wetherholt",
+      "position": "SS",
+      "mlbTeam": "STL",
+      "fantasyTeam": "1987",
+      "capValue": 14
+    },
+    {
+      "name": "Jac Caglianone",
+      "position": "OF",
+      "mlbTeam": "KC",
+      "fantasyTeam": "1987",
+      "capValue": 8
+    },
+    {
+      "name": "Colton Cowser",
+      "position": "OF",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "1987",
+      "capValue": 10
+    },
+    {
+      "name": "Jung Hoo Lee",
+      "position": "OF",
+      "mlbTeam": "SF",
+      "fantasyTeam": "1987",
+      "capValue": 6
+    },
+    {
+      "name": "Noelvi Marte",
+      "position": "OF",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "1987",
+      "capValue": 5
+    },
+    {
+      "name": "Wyatt Langford",
+      "position": "DH",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "1987",
+      "capValue": 15
+    },
+    {
+      "name": "Aidan Miller",
+      "position": "SS",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "1987",
+      "capValue": 6
+    },
+    {
+      "name": "Colt Emerson",
+      "position": "DH",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "1987",
+      "capValue": 9
+    },
+    {
+      "name": "Kodai Senga",
+      "position": "SP",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "1987",
+      "capValue": 14
+    },
+    {
+      "name": "Gavin Williams",
+      "position": "SP",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "1987",
+      "capValue": 14
+    },
+    {
+      "name": "Tanner Bibee",
+      "position": "SP",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "1987",
+      "capValue": 15
+    },
+    {
+      "name": "Kyle Harrison",
+      "position": "SP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "1987",
+      "capValue": 8
+    },
+    {
+      "name": "Jacob Misiorowski",
+      "position": "SP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "1987",
+      "capValue": 5
+    },
+    {
+      "name": "Kumar Rocker",
+      "position": "SP",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "1987",
+      "capValue": 2
+    },
+    {
+      "name": "Trevor Rogers",
+      "position": "SP",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "1987",
+      "capValue": 17
+    },
+    {
+      "name": "Jose Soriano",
+      "position": "SP",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "1987",
+      "capValue": 4
+    },
+    {
+      "name": "Joe Musgrove",
+      "position": "SP",
+      "mlbTeam": "SD",
+      "fantasyTeam": "1987",
+      "capValue": 9
+    },
+    {
+      "name": "Dansby Swanson",
+      "position": "SS",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 16
+    },
+    {
+      "name": "Justin Crawford",
+      "position": "OF",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 14
+    },
+    {
+      "name": "Adolis Garcia",
+      "position": "OF",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 13
+    },
+    {
+      "name": "Andy Pages",
+      "position": "OF",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 12
+    },
+    {
+      "name": "Willy Adames",
+      "position": "DH",
+      "mlbTeam": "SF",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 19
+    },
+    {
+      "name": "AJ Garcia",
+      "position": "OF",
+      "mlbTeam": "Unaffiliated",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 1
+    },
+    {
+      "name": "Lawrence Butler",
+      "position": "OF",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 18
+    },
+    {
+      "name": "Tyler Bell",
+      "position": "DH",
+      "mlbTeam": "Unaffiliated",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 1
+    },
+    {
+      "name": "Hunter Brown",
+      "position": "SP",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 14
+    },
+    {
+      "name": "Ryne Nelson",
+      "position": "SP",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 11
+    },
+    {
+      "name": "Michael Wacha",
+      "position": "SP",
+      "mlbTeam": "KC",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 8
+    },
+    {
+      "name": "Emilio Pagan",
+      "position": "RP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 9
+    },
+    {
+      "name": "Matthew Boyd",
+      "position": "SP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 12
+    },
+    {
+      "name": "Tyler Bremner",
+      "position": "SP",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 1
+    },
+    {
+      "name": "Connelly Early",
+      "position": "SP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 11
+    },
+    {
+      "name": "Merrill Kelly",
+      "position": "SP",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 16
+    },
+    {
+      "name": "David Peterson",
+      "position": "SP",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 14
+    },
+    {
+      "name": "Jameson Taillon",
+      "position": "SP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 7
+    },
+    {
+      "name": "Trey Yesavage",
+      "position": "SP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 17
+    },
+    {
+      "name": "Trevor Megill",
+      "position": "RP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Bill Buff Boys",
+      "capValue": 14
+    },
+    {
+      "name": "Geraldo Perdomo",
+      "position": "SS",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Ethe",
+      "capValue": 12
+    },
+    {
+      "name": "Julio Rodriguez",
+      "position": "OF",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Ethe",
+      "capValue": 22
+    },
+    {
+      "name": "George Springer",
+      "position": "OF",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Ethe",
+      "capValue": 17
+    },
+    {
+      "name": "Rafael Devers",
+      "position": "DH",
+      "mlbTeam": "SF",
+      "fantasyTeam": "Ethe",
+      "capValue": 19
+    },
+    {
+      "name": "Christian Yelich",
+      "position": "DH",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Ethe",
+      "capValue": 17
+    },
+    {
+      "name": "Masyn Winn",
+      "position": "SS",
+      "mlbTeam": "STL",
+      "fantasyTeam": "Ethe",
+      "capValue": 10
+    },
+    {
+      "name": "Joshua Baez",
+      "position": "OF",
+      "mlbTeam": "STL",
+      "fantasyTeam": "Ethe",
+      "capValue": 7
+    },
+    {
+      "name": "Daylen Lile",
+      "position": "OF",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "Ethe",
+      "capValue": 13
+    },
+    {
+      "name": "Eduardo Quintero",
+      "position": "OF",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Ethe",
+      "capValue": 7
+    },
+    {
+      "name": "Roch Cholowsky",
+      "position": "DH",
+      "mlbTeam": "Unaffiliated",
+      "fantasyTeam": "Ethe",
+      "capValue": 11
+    },
+    {
+      "name": "Seiya Suzuki",
+      "position": "DH",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Ethe",
+      "capValue": 19
+    },
+    {
+      "name": "Shane Baz",
+      "position": "SP",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "Ethe",
+      "capValue": 14
+    },
+    {
+      "name": "Taj Bradley",
+      "position": "SP",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "Ethe",
+      "capValue": 5
+    },
+    {
+      "name": "Sonny Gray",
+      "position": "SP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Ethe",
+      "capValue": 17
+    },
+    {
+      "name": "Nick Pivetta",
+      "position": "SP",
+      "mlbTeam": "SD",
+      "fantasyTeam": "Ethe",
+      "capValue": 16
+    },
+    {
+      "name": "Jhoan Duran",
+      "position": "RP",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "Ethe",
+      "capValue": 16
+    },
+    {
+      "name": "Jose Berrios",
+      "position": "SP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Ethe",
+      "capValue": 4
+    },
+    {
+      "name": "Adrian Houser",
+      "position": "SP",
+      "mlbTeam": "SF",
+      "fantasyTeam": "Ethe",
+      "capValue": 6
+    },
+    {
+      "name": "Jackson Flora",
+      "position": "SP",
+      "mlbTeam": "Unaffiliated",
+      "fantasyTeam": "Ethe",
+      "capValue": 4
+    },
+    {
+      "name": "Nick Lodolo",
+      "position": "SP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "Ethe",
+      "capValue": 16
+    },
+    {
+      "name": "Will Warren",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Ethe",
+      "capValue": 12
+    },
+    {
+      "name": "Braxton Ashcraft",
+      "position": "RP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Ethe",
+      "capValue": 9
+    },
+    {
+      "name": "Reid Detmers",
+      "position": "RP",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Ethe",
+      "capValue": 6
+    },
+    {
+      "name": "Kenley Jansen",
+      "position": "RP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Ethe",
+      "capValue": 8
+    },
+    {
+      "name": "Payton Tolle",
+      "position": "RP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Ethe",
+      "capValue": 12
+    },
+    {
+      "name": "Bo Bichette",
+      "position": "SS",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 20
+    },
+    {
+      "name": "Kerry Carpenter",
+      "position": "OF",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 7
+    },
+    {
+      "name": "Taylor Ward",
+      "position": "OF",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 17
+    },
+    {
+      "name": "Joshua Lowe",
+      "position": "OF",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 5
+    },
+    {
+      "name": "Kyle Stowers",
+      "position": "OF",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 12
+    },
+    {
+      "name": "Jorge Polanco",
+      "position": "DH",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 7
+    },
+    {
+      "name": "Bryce Rainer",
+      "position": "SS",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 5
+    },
+    {
+      "name": "Edward Florentino",
+      "position": "OF",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 6
+    },
+    {
+      "name": "Lazaro Montes",
+      "position": "OF",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 3
+    },
+    {
+      "name": "Garrett Crochet",
+      "position": "SP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 15
+    },
+    {
+      "name": "Mitch Keller",
+      "position": "SP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 6
+    },
+    {
+      "name": "Mike Soroka",
+      "position": "SP",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 10
+    },
+    {
+      "name": "Jacob deGrom",
+      "position": "SP",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 23
+    },
+    {
+      "name": "Raisel Iglesias",
+      "position": "RP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 10
+    },
+    {
+      "name": "Walker Buehler",
+      "position": "SP",
+      "mlbTeam": "SD",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 4
+    },
+    {
+      "name": "Dustin May",
+      "position": "SP",
+      "mlbTeam": "STL",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 6
+    },
+    {
+      "name": "Justin Verlander",
+      "position": "SP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 7
+    },
+    {
+      "name": "Steven Matz",
+      "position": "RP",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 2
+    },
+    {
+      "name": "Robert Suarez",
+      "position": "RP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 2
+    },
+    {
+      "name": "Ryan Walker",
+      "position": "RP",
+      "mlbTeam": "SF",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 8
+    },
+    {
+      "name": "Travis Sykora",
+      "position": "SP",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "Chico Bail Bonds",
+      "capValue": 1
+    },
+    {
+      "name": "Zachary Neto",
+      "position": "SS",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 14
+    },
+    {
+      "name": "Wilyer Abreu",
+      "position": "OF",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 7
+    },
+    {
+      "name": "Teoscar Hernandez",
+      "position": "OF",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 18
+    },
+    {
+      "name": "Ramon Laureano",
+      "position": "OF",
+      "mlbTeam": "SD",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 12
+    },
+    {
+      "name": "Franklin Arias",
+      "position": "SS",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 7
+    },
+    {
+      "name": "Josh H. Smith",
+      "position": "SS",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 4
+    },
+    {
+      "name": "Jett Williams",
+      "position": "SS",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 2
+    },
+    {
+      "name": "Daulton Varsho",
+      "position": "OF",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 17
+    },
+    {
+      "name": "Trent Grisham",
+      "position": "DH",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 8
+    },
+    {
+      "name": "Grant Holmes",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 15
+    },
+    {
+      "name": "Michael King",
+      "position": "SP",
+      "mlbTeam": "SD",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 20
+    },
+    {
+      "name": "Jack Leiter",
+      "position": "SP",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 11
+    },
+    {
+      "name": "Max Scherzer",
+      "position": "SP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 3
+    },
+    {
+      "name": "Andres Munoz",
+      "position": "RP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 17
+    },
+    {
+      "name": "Brayan Bello",
+      "position": "SP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 10
+    },
+    {
+      "name": "Logan Henderson",
+      "position": "SP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 12
+    },
+    {
+      "name": "Cristian Javier",
+      "position": "SP",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 9
+    },
+    {
+      "name": "Shane McClanahan",
+      "position": "SP",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 16
+    },
+    {
+      "name": "Ryan Pepiot",
+      "position": "SP",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 18
+    },
+    {
+      "name": "Brady Singer",
+      "position": "SP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 11
+    },
+    {
+      "name": "Ryan Sloan",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 8
+    },
+    {
+      "name": "A.J. Smith-Shawver",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 2
+    },
+    {
+      "name": "Blake Snell",
+      "position": "SP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Goodfellas ( Justin)",
+      "capValue": 24
+    },
+    {
+      "name": "C.J. Abrams",
+      "position": "SS",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 17
+    },
+    {
+      "name": "Luis Robert",
+      "position": "OF",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 16
+    },
+    {
+      "name": "James Wood",
+      "position": "OF",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 16
+    },
+    {
+      "name": "Carlos Correa",
+      "position": "DH",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 14
+    },
+    {
+      "name": "Dax Kilby",
+      "position": "SS",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 1
+    },
+    {
+      "name": "Evan Carter",
+      "position": "OF",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 10
+    },
+    {
+      "name": "Denzel Clarke",
+      "position": "OF",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 2
+    },
+    {
+      "name": "Jakob Marsee",
+      "position": "OF",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 16
+    },
+    {
+      "name": "Ceddanne Rafaela",
+      "position": "OF",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 13
+    },
+    {
+      "name": "Ivan Herrera",
+      "position": "DH",
+      "mlbTeam": "STL",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 11
+    },
+    {
+      "name": "Logan Gilbert",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 17
+    },
+    {
+      "name": "George Kirby",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 16
+    },
+    {
+      "name": "Eury Perez",
+      "position": "SP",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 15
+    },
+    {
+      "name": "Cole Ragans",
+      "position": "SP",
+      "mlbTeam": "KC",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 20
+    },
+    {
+      "name": "Emmet Sheehan",
+      "position": "SP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 18
+    },
+    {
+      "name": "Pete Fairbanks",
+      "position": "RP",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 9
+    },
+    {
+      "name": "Mick Abel",
+      "position": "SP",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 11
+    },
+    {
+      "name": "Liam Doyle",
+      "position": "SP",
+      "mlbTeam": "STL",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 5
+    },
+    {
+      "name": "Hunter Greene",
+      "position": "SP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 16
+    },
+    {
+      "name": "Jared Jones",
+      "position": "SP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 9
+    },
+    {
+      "name": "Parker Messick",
+      "position": "SP",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 12
+    },
+    {
+      "name": "Ryan Weathers",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 14
+    },
+    {
+      "name": "Daniel Palencia",
+      "position": "RP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 15
+    },
+    {
+      "name": "Dennis Santana",
+      "position": "RP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 8
+    },
+    {
+      "name": "Kade Anderson",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Mattliny Mashers",
+      "capValue": 12
+    },
+    {
+      "name": "Chase DeLauter",
+      "position": "OF",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 6
+    },
+    {
+      "name": "Aaron Judge",
+      "position": "OF",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 21
+    },
+    {
+      "name": "Fernando Tatis Jr.",
+      "position": "OF",
+      "mlbTeam": "SD",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 20
+    },
+    {
+      "name": "Justin Lebron",
+      "position": "SS",
+      "mlbTeam": "Unaffiliated",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 10
+    },
+    {
+      "name": "Carson Benge",
+      "position": "OF",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 15
+    },
+    {
+      "name": "Jacob Wilson",
+      "position": "DH",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 11
+    },
+    {
+      "name": "Eli Willits",
+      "position": "SS",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 1
+    },
+    {
+      "name": "Chase Burns",
+      "position": "SP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 8
+    },
+    {
+      "name": "Jesus Luzardo",
+      "position": "SP",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 17
+    },
+    {
+      "name": "Joe Ryan",
+      "position": "SP",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 18
+    },
+    {
+      "name": "Randy Vasquez",
+      "position": "SP",
+      "mlbTeam": "SD",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 10
+    },
+    {
+      "name": "Lucas Erceg",
+      "position": "RP",
+      "mlbTeam": "KC",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 10
+    },
+    {
+      "name": "Michael Burrows",
+      "position": "SP",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 13
+    },
+    {
+      "name": "Jack Flaherty",
+      "position": "SP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 14
+    },
+    {
+      "name": "Didier Fuentes",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 11
+    },
+    {
+      "name": "Tatsuya Imai",
+      "position": "SP",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 17
+    },
+    {
+      "name": "Carlos Rodon",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 18
+    },
+    {
+      "name": "Jeff Hoffman",
+      "position": "RP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 10
+    },
+    {
+      "name": "Cody Ponce",
+      "position": "RP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 9
+    },
+    {
+      "name": "Jackson Jobe",
+      "position": "SP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 7
+    },
+    {
+      "name": "Pablo Lopez",
+      "position": "SP",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "MoneyBallers",
+      "capValue": 6
+    },
+    {
+      "name": "Jarren Duran",
+      "position": "OF",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 15
+    },
+    {
+      "name": "Riley Greene",
+      "position": "OF",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 16
+    },
+    {
+      "name": "Heliot Ramos",
+      "position": "OF",
+      "mlbTeam": "SF",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 14
+    },
+    {
+      "name": "Zac Veen",
+      "position": "OF",
+      "mlbTeam": "COL",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 9
+    },
+    {
+      "name": "Moises Ballesteros",
+      "position": "DH",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 14
+    },
+    {
+      "name": "Bryce Eldridge",
+      "position": "DH",
+      "mlbTeam": "SF",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 13
+    },
+    {
+      "name": "Colt Keith",
+      "position": "DH",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 9
+    },
+    {
+      "name": "Jesus Made",
+      "position": "DH",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 6
+    },
+    {
+      "name": "Andrew Abbott",
+      "position": "SP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 6
+    },
+    {
+      "name": "Bubba Chandler",
+      "position": "SP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 15
+    },
+    {
+      "name": "MacKenzie Gore",
+      "position": "SP",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 17
+    },
+    {
+      "name": "Casey Mize",
+      "position": "SP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 11
+    },
+    {
+      "name": "Framber Valdez",
+      "position": "SP",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 18
+    },
+    {
+      "name": "Edwin Diaz",
+      "position": "RP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 18
+    },
+    {
+      "name": "Chris Bassitt",
+      "position": "SP",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 8
+    },
+    {
+      "name": "Kyle Bradish",
+      "position": "SP",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 5
+    },
+    {
+      "name": "Ben Brown",
+      "position": "SP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 9
+    },
+    {
+      "name": "Noah Cameron",
+      "position": "SP",
+      "mlbTeam": "KC",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 12
+    },
+    {
+      "name": "Slade Cecconi",
+      "position": "SP",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 11
+    },
+    {
+      "name": "Nathan Eovaldi",
+      "position": "SP",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 17
+    },
+    {
+      "name": "Brody Hopkins",
+      "position": "SP",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 2
+    },
+    {
+      "name": "Quinn Priester",
+      "position": "SP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 10
+    },
+    {
+      "name": "JR Ritchie",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 1
+    },
+    {
+      "name": "Grayson Rodriguez",
+      "position": "SP",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 15
+    },
+    {
+      "name": "River Ryan",
+      "position": "SP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 7
+    },
+    {
+      "name": "Jeffrey Springs",
+      "position": "SP",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "Outinthefield",
+      "capValue": 4
+    },
+    {
+      "name": "Brandon Nimmo",
+      "position": "OF",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 16
+    },
+    {
+      "name": "Bryan Reynolds",
+      "position": "OF",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 18
+    },
+    {
+      "name": "Matt Wallner",
+      "position": "OF",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 11
+    },
+    {
+      "name": "Chandler Simpson",
+      "position": "DH",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 10
+    },
+    {
+      "name": "Dominic Canzone",
+      "position": "DH",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 11
+    },
+    {
+      "name": "Ethan Holliday",
+      "position": "DH",
+      "mlbTeam": "Unaffiliated",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 5
+    },
+    {
+      "name": "Noah Miller",
+      "position": "SS",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 10
+    },
+    {
+      "name": "Jasson Dominguez",
+      "position": "OF",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 15
+    },
+    {
+      "name": "Max Meyer",
+      "position": "SP",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 12
+    },
+    {
+      "name": "Drew Rasmussen",
+      "position": "SP",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 10
+    },
+    {
+      "name": "Cameron Schlittler",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 18
+    },
+    {
+      "name": "Luis Severino",
+      "position": "SP",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 10
+    },
+    {
+      "name": "Brandon Woodruff",
+      "position": "SP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 17
+    },
+    {
+      "name": "Cade Smith",
+      "position": "RP",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 17
+    },
+    {
+      "name": "Angel Bastardo",
+      "position": "SP",
+      "mlbTeam": "TOR",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 5
+    },
+    {
+      "name": "Luis Castillo",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 20
+    },
+    {
+      "name": "Brandon Pfaadt",
+      "position": "SP",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 9
+    },
+    {
+      "name": "Brandon Sproat",
+      "position": "SP",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 8
+    },
+    {
+      "name": "Bryan Woo",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 19
+    },
+    {
+      "name": "Bryan Abreu",
+      "position": "RP",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 4
+    },
+    {
+      "name": "Griffin Jax",
+      "position": "RP",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 7
+    },
+    {
+      "name": "Devin Williams",
+      "position": "RP",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 14
+    },
+    {
+      "name": "Clarke Schmidt",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 6
+    },
+    {
+      "name": "Shane Smith",
+      "position": "SP",
+      "mlbTeam": "CHW",
+      "fantasyTeam": "Rookie Scum",
+      "capValue": 14
+    },
+    {
+      "name": "Jeremy Pena",
+      "position": "SS",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Warriors",
+      "capValue": 18
+    },
+    {
+      "name": "Jo Adell",
+      "position": "OF",
+      "mlbTeam": "LAA",
+      "fantasyTeam": "Warriors",
+      "capValue": 16
+    },
+    {
+      "name": "Ian Happ",
+      "position": "OF",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Warriors",
+      "capValue": 16
+    },
+    {
+      "name": "Steven Kwan",
+      "position": "OF",
+      "mlbTeam": "CLE",
+      "fantasyTeam": "Warriors",
+      "capValue": 14
+    },
+    {
+      "name": "Yandy Diaz",
+      "position": "DH",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Warriors",
+      "capValue": 16
+    },
+    {
+      "name": "Mickey Moniak",
+      "position": "OF",
+      "mlbTeam": "COL",
+      "fantasyTeam": "Warriors",
+      "capValue": 13
+    },
+    {
+      "name": "Tyler O'Neill",
+      "position": "OF",
+      "mlbTeam": "BAL",
+      "fantasyTeam": "Warriors",
+      "capValue": 11
+    },
+    {
+      "name": "Cam Smith",
+      "position": "OF",
+      "mlbTeam": "HOU",
+      "fantasyTeam": "Warriors",
+      "capValue": 9
+    },
+    {
+      "name": "Anthony Volpe",
+      "position": "SS",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Warriors",
+      "capValue": 8
+    },
+    {
+      "name": "Brent Rooker",
+      "position": "DH",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "Warriors",
+      "capValue": 11
+    },
+    {
+      "name": "George Lombard",
+      "position": "SS",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Warriors",
+      "capValue": 8
+    },
+    {
+      "name": "Carson Williams",
+      "position": "SS",
+      "mlbTeam": "TB",
+      "fantasyTeam": "Warriors",
+      "capValue": 10
+    },
+    {
+      "name": "Ryan Waldschmidt",
+      "position": "OF",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Warriors",
+      "capValue": 8
+    },
+    {
+      "name": "Bryce Elder",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Warriors",
+      "capValue": 10
+    },
+    {
+      "name": "Zac Gallen",
+      "position": "SP",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Warriors",
+      "capValue": 15
+    },
+    {
+      "name": "Cade Cavalli",
+      "position": "SP",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "Warriors",
+      "capValue": 9
+    },
+    {
+      "name": "Matthew Liberatore",
+      "position": "SP",
+      "mlbTeam": "STL",
+      "fantasyTeam": "Warriors",
+      "capValue": 12
+    },
+    {
+      "name": "Roki Sasaki",
+      "position": "SP",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Warriors",
+      "capValue": 16
+    },
+    {
+      "name": "Ranger Suarez",
+      "position": "SP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Warriors",
+      "capValue": 15
+    },
+    {
+      "name": "Cade Horton",
+      "position": "SP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Warriors",
+      "capValue": 5
+    },
+    {
+      "name": "Bryce Miller",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Warriors",
+      "capValue": 11
+    },
+    {
+      "name": "Spencer Schwellenbach",
+      "position": "SP",
+      "mlbTeam": "ATL",
+      "fantasyTeam": "Warriors",
+      "capValue": 14
+    },
+    {
+      "name": "Justin Steele",
+      "position": "SP",
+      "mlbTeam": "CHC",
+      "fantasyTeam": "Warriors",
+      "capValue": 9
+    },
+    {
+      "name": "Robby Snelling",
+      "position": "SP",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Warriors",
+      "capValue": 9
+    },
+    {
+      "name": "Kevin McGonigle",
+      "position": "SS",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Scambino",
+      "capValue": 7
+    },
+    {
+      "name": "Roman Anthony",
+      "position": "OF",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Scambino",
+      "capValue": 14
+    },
+    {
+      "name": "Owen Caissie",
+      "position": "OF",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Scambino",
+      "capValue": 8
+    },
+    {
+      "name": "Josh Bell",
+      "position": "DH",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "Scambino",
+      "capValue": 10
+    },
+    {
+      "name": "Giancarlo Stanton",
+      "position": "DH",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Scambino",
+      "capValue": 12
+    },
+    {
+      "name": "Colson Montgomery",
+      "position": "SS",
+      "mlbTeam": "CHW",
+      "fantasyTeam": "Scambino",
+      "capValue": 18
+    },
+    {
+      "name": "Luis Pena",
+      "position": "SS",
+      "mlbTeam": "MIL",
+      "fantasyTeam": "Scambino",
+      "capValue": 12
+    },
+    {
+      "name": "Josue De Paula",
+      "position": "OF",
+      "mlbTeam": "LAD",
+      "fantasyTeam": "Scambino",
+      "capValue": 8
+    },
+    {
+      "name": "Dylan Crews",
+      "position": "DH",
+      "mlbTeam": "WAS",
+      "fantasyTeam": "Scambino",
+      "capValue": 13
+    },
+    {
+      "name": "Ezequiel Tovar",
+      "position": "DH",
+      "mlbTeam": "COL",
+      "fantasyTeam": "Scambino",
+      "capValue": 16
+    },
+    {
+      "name": "Spencer Jones",
+      "position": "OF",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Scambino",
+      "capValue": 8
+    },
+    {
+      "name": "Emmanuel Rodriguez",
+      "position": "OF",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "Scambino",
+      "capValue": 9
+    },
+    {
+      "name": "Max Clark",
+      "position": "DH",
+      "mlbTeam": "DET",
+      "fantasyTeam": "Scambino",
+      "capValue": 13
+    },
+    {
+      "name": "Walker Jenkins",
+      "position": "DH",
+      "mlbTeam": "MIN",
+      "fantasyTeam": "Scambino",
+      "capValue": 15
+    },
+    {
+      "name": "Sebastian Walcott",
+      "position": "DH",
+      "mlbTeam": "TEX",
+      "fantasyTeam": "Scambino",
+      "capValue": 13
+    },
+    {
+      "name": "Emerson Hancock",
+      "position": "SP",
+      "mlbTeam": "SEA",
+      "fantasyTeam": "Scambino",
+      "capValue": 10
+    },
+    {
+      "name": "Rhett Lowder",
+      "position": "SP",
+      "mlbTeam": "CIN",
+      "fantasyTeam": "Scambino",
+      "capValue": 5
+    },
+    {
+      "name": "Nolan McLean",
+      "position": "SP",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Scambino",
+      "capValue": 18
+    },
+    {
+      "name": "Andrew Painter",
+      "position": "SP",
+      "mlbTeam": "PHI",
+      "fantasyTeam": "Scambino",
+      "capValue": 17
+    },
+    {
+      "name": "Eduardo Rodriguez",
+      "position": "SP",
+      "mlbTeam": "ARI",
+      "fantasyTeam": "Scambino",
+      "capValue": 10
+    },
+    {
+      "name": "Aroldis Chapman",
+      "position": "RP",
+      "mlbTeam": "BOS",
+      "fantasyTeam": "Scambino",
+      "capValue": 8
+    },
+    {
+      "name": "Aaron Civale",
+      "position": "SP",
+      "mlbTeam": "ATH",
+      "fantasyTeam": "Scambino",
+      "capValue": 10
+    },
+    {
+      "name": "Seth Hernandez",
+      "position": "SP",
+      "mlbTeam": "PIT",
+      "fantasyTeam": "Scambino",
+      "capValue": 1
+    },
+    {
+      "name": "Carlos Lagrange",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Scambino",
+      "capValue": 11
+    },
+    {
+      "name": "Elmer Rodriguez-Cruz",
+      "position": "SP",
+      "mlbTeam": "NYY",
+      "fantasyTeam": "Scambino",
+      "capValue": 1
+    },
+    {
+      "name": "Noah Schultz",
+      "position": "SP",
+      "mlbTeam": "CHW",
+      "fantasyTeam": "Scambino",
+      "capValue": 11
+    },
+    {
+      "name": "Jonah Tong",
+      "position": "SP",
+      "mlbTeam": "NYM",
+      "fantasyTeam": "Scambino",
+      "capValue": 9
+    },
+    {
+      "name": "Thomas White",
+      "position": "SP",
+      "mlbTeam": "MIA",
+      "fantasyTeam": "Scambino",
+      "capValue": 13
+    }
+  ],
+  "freeAgents": [
+    {
+      "id": "rutschman",
+      "name": "Adley Rutschman",
+      "position": "C",
+      "team": "BAL"
+    },
+    {
+      "id": "raleigh",
+      "name": "Cal Raleigh",
+      "position": "C",
+      "team": "SEA"
+    },
+    {
+      "id": "wsmith",
+      "name": "Will Smith",
+      "position": "C",
+      "team": "LAD"
+    },
+    {
+      "id": "realmuto",
+      "name": "J.T. Realmuto",
+      "position": "C",
+      "team": "PHI"
+    },
+    {
+      "id": "moreno",
+      "name": "Gabriel Moreno",
+      "position": "C",
+      "team": "ARI"
+    },
+    {
+      "id": "kirk",
+      "name": "Alejandro Kirk",
+      "position": "C",
+      "team": "TOR"
+    },
+    {
+      "id": "freeman",
+      "name": "Freddie Freeman",
+      "position": "1B",
+      "team": "LAD"
+    },
+    {
+      "id": "vlad",
+      "name": "Vladimir Guerrero Jr.",
+      "position": "1B",
+      "team": "TOR"
+    },
+    {
+      "id": "alonso",
+      "name": "Pete Alonso",
+      "position": "1B",
+      "team": "NYM"
+    },
+    {
+      "id": "olson",
+      "name": "Matt Olson",
+      "position": "1B",
+      "team": "ATL"
+    },
+    {
+      "id": "walker",
+      "name": "Christian Walker",
+      "position": "1B",
+      "team": "ARI"
+    },
+    {
+      "id": "torkelson",
+      "name": "Spencer Torkelson",
+      "position": "1B",
+      "team": "DET"
+    },
+    {
+      "id": "altuve",
+      "name": "Jose Altuve",
+      "position": "2B",
+      "team": "HOU"
+    },
+    {
+      "id": "albies",
+      "name": "Ozzie Albies",
+      "position": "2B",
+      "team": "ATL"
+    },
+    {
+      "id": "marte",
+      "name": "Ketel Marte",
+      "position": "2B",
+      "team": "ARI"
+    },
+    {
+      "id": "semien",
+      "name": "Marcus Semien",
+      "position": "2B",
+      "team": "TEX"
+    },
+    {
+      "id": "gimenez",
+      "name": "Andrés Giménez",
+      "position": "2B",
+      "team": "CLE"
+    },
+    {
+      "id": "holliday",
+      "name": "Jackson Holliday",
+      "position": "SS",
+      "team": "BAL"
+    },
+    {
+      "id": "abrams",
+      "name": "CJ Abrams",
+      "position": "SS",
+      "team": "WAS"
+    },
+    {
+      "id": "jramirez",
+      "name": "José Ramírez",
+      "position": "3B",
+      "team": "CLE"
+    },
+    {
+      "id": "machado",
+      "name": "Manny Machado",
+      "position": "3B",
+      "team": "SD"
+    },
+    {
+      "id": "riley",
+      "name": "Austin Riley",
+      "position": "3B",
+      "team": "ATL"
+    },
+    {
+      "id": "bregman",
+      "name": "Alex Bregman",
+      "position": "3B",
+      "team": "BOS"
+    },
+    {
+      "id": "arenado",
+      "name": "Nolan Arenado",
+      "position": "3B",
+      "team": "STL"
+    },
+    {
+      "id": "acuna",
+      "name": "Ronald Acuña Jr.",
+      "position": "OF",
+      "team": "ATL"
+    },
+    {
+      "id": "jrod",
+      "name": "Julio Rodríguez",
+      "position": "OF",
+      "team": "SEA"
+    },
+    {
+      "id": "larsn",
+      "name": "Lars Nootbaar",
+      "position": "OF",
+      "team": "STL"
+    },
+    {
+      "id": "ohtani-bat",
+      "name": "Shohei Ohtani (bat)",
+      "position": "DH",
+      "team": "LAD"
+    },
+    {
+      "id": "lwebb",
+      "name": "Logan Webb",
+      "position": "SP",
+      "team": "SF"
+    },
+    {
+      "id": "peralta",
+      "name": "Freddy Peralta",
+      "position": "SP",
+      "team": "MIL"
+    },
+    {
+      "id": "lopez",
+      "name": "Pablo López",
+      "position": "SP",
+      "team": "MIN"
+    },
+    {
+      "id": "ohtani-pit",
+      "name": "Shohei Ohtani (SP)",
+      "position": "SP",
+      "team": "LAD"
+    },
+    {
+      "id": "clase",
+      "name": "Emmanuel Clase",
+      "position": "RP",
+      "team": "CLE"
+    },
+    {
+      "id": "helsley",
+      "name": "Ryan Helsley",
+      "position": "RP",
+      "team": "STL"
+    },
+    {
+      "id": "fbautista",
+      "name": "Félix Bautista",
+      "position": "RP",
+      "team": "BAL"
+    },
+    {
+      "id": "diaz",
+      "name": "Edwin Díaz",
+      "position": "RP",
+      "team": "NYM"
+    },
+    {
+      "id": "doval",
+      "name": "Camilo Doval",
+      "position": "RP",
+      "team": "SF"
+    },
+    {
+      "id": "munoz",
+      "name": "Andrés Muñoz",
+      "position": "RP",
+      "team": "SEA"
+    },
+    {
+      "id": "phillipse",
+      "name": "Evan Phillips",
+      "position": "RP",
+      "team": "LAD"
+    },
+    {
+      "id": "romano",
+      "name": "Jordan Romano",
+      "position": "RP",
+      "team": "TOR"
+    }
+  ]
+}

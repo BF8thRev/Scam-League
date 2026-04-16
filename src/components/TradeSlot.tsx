@@ -67,11 +67,16 @@ export default function TradeSlot({ player, cap, onCapChange, onRemove }: Props)
     <div className="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden">
       {/* Header row */}
       <div className="flex items-start justify-between px-4 pt-3 pb-2">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${POS_BADGE[player.position]}`}>
-            {player.position}
-          </span>
-          <span className="text-white font-semibold text-sm">{player.name}</span>
+        <div className="flex flex-col gap-1 flex-1">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${POS_BADGE[player.position]}`}>
+              {player.position}
+            </span>
+            <span className="text-white font-semibold text-sm">
+              {player.name}
+              {player.fantasyTeam && <span className="text-gray-400 font-normal"> ({player.fantasyTeam})</span>}
+            </span>
+          </div>
           <span className="text-gray-500 text-xs">{player.team} · Age {player.age}</span>
         </div>
         <button onClick={onRemove} className="text-gray-600 hover:text-red-400 transition-colors ml-2">
