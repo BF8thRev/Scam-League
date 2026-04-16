@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Trash2, ChevronDown, ChevronUp, Pencil, Check, X } from 'lucide-react';
 import type { TradeRow } from '../types/database';
 import { deleteTrade, updateRetroNote } from '../lib/tradeHistory';
+import TradeRatingCard from './TradeRatingCard';
 
 interface Props {
   trade: TradeRow;
@@ -122,6 +123,15 @@ export default function TradeRecordCard({ trade, onDeleted, onUpdated }: Props) 
         <div className="px-4 pb-4 space-y-3 border-t border-gray-800 pt-3">
           {trade.note && (
             <p className="text-xs text-gray-400 italic">"{trade.note}"</p>
+          )}
+
+          {/* Trade Rating */}
+          {trade.dimension_scores && (
+            <TradeRatingCard
+              scores={trade.dimension_scores}
+              adminOpinion={trade.admin_opinion_rating}
+              adminComment={trade.admin_opinion_comment}
+            />
           )}
 
           {/* Retro note */}

@@ -41,14 +41,16 @@ function todayISO() {
 
 export default function Verdict({ sideA, sideB, labelA, labelB, onTradeLogged }: Props) {
   // ── Log trade panel state ────────────────────────────────────────────────
-  const [logOpen, setLogOpen]     = useState(false);
-  const [ownerA, setOwnerA]       = useState('');
-  const [ownerB, setOwnerB]       = useState('');
-  const [tradeDate, setTradeDate] = useState(todayISO);
-  const [note, setNote]           = useState('');
-  const [saving, setSaving]       = useState(false);
-  const [saved, setSaved]         = useState(false);
-  const [saveError, setSaveError] = useState('');
+  const [logOpen, setLogOpen]           = useState(false);
+  const [ownerA, setOwnerA]             = useState('');
+  const [ownerB, setOwnerB]             = useState('');
+  const [tradeDate, setTradeDate]       = useState(todayISO);
+  const [note, setNote]                 = useState('');
+  const [adminOpinionRating, setAdminOpinionRating] = useState<number | undefined>();
+  const [adminOpinionComment, setAdminOpinionComment] = useState('');
+  const [saving, setSaving]             = useState(false);
+  const [saved, setSaved]               = useState(false);
+  const [saveError, setSaveError]       = useState('');
 
   const A = analyzeSide(sideA);
   const B = analyzeSide(sideB);
@@ -76,10 +78,17 @@ export default function Verdict({ sideA, sideB, labelA, labelB, onTradeLogged }:
     setSaving(true);
     setSaveError('');
     try {
-      await logTrade({ sideA, sideB, ownerA, ownerB, tradeDate, note, labelA, labelB });
+      await logTrade({
+        sideA, sideB, ownerA, ownerB, tradeDate, note, labelA, labelB,
+        adminOpinionRating,
+        adminOpinionComment: adminOpinionComment.trim() || undefined,
+      });
       setSaved(true);
       onTradeLogged?.();
       setTimeout(() => setSaved(false), 4000);
+      // Reset form
+      setAdminOpinionRating(undefined);
+      setAdminOpinionComment('');
     } catch (err) {
       setSaveError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
@@ -217,6 +226,34 @@ export default function Verdict({ sideA, sideB, labelA, labelB, onTradeLogged }:
                   placeholder="e.g. deadline deal"
                   className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-emerald-500 transition-colors"
                 />
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700 pt-3">
+              <label className="text-xs text-gray-500 block mb-2 font-semibold">Your Secret Sauce Opinion (optional)</label>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs text-gray-600 block mb-1">Rating (1-10)</label>
+                  <select
+                    value={adminOpinionRating ?? ''}
+                    onChange={e => setAdminOpinionRating(e.target.value ? parseInt(e.target.value) : undefined)}
+                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-emerald-500 transition-colors"
+                  >
+                    <option value="">Unrated</option>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                      <option key={n} value={n}>{n}/10</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs text-gray-600 block mb-1">Why? (optional)</label>
+                  <input
+                    value={adminOpinionComment}
+                    onChange={e => setAdminOpinionComment(e.target.value)}
+                    placeholder="e.g. risky but smart"
+                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-emerald-500 transition-colors"
+                  />
+                </div>
               </div>
             </div>
 

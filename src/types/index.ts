@@ -76,3 +76,13 @@ export interface TradeSlot {
   player: BaseballPlayer;
   cap: number;
 }
+
+export interface DimensionScores {
+  cap_efficiency: number;        // 0-10: Points per cap dollar
+  position_value: number;        // 0-10: Scarcity of positions acquired
+  mlb_team_context: number;      // 0-10: Quality/stability of MLB teams
+  dynasty_outlook: number;       // 0-10: 3-year dynasty surplus
+  season_timing: number;         // 0-10: Strategic insight from calendar
+  composite_score: number;       // 0-10: Weighted average of above 5 dimensions
+  risk_score: number;            // 0-10: Risk assessment (separate from value)
+}

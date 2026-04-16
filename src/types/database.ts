@@ -1,6 +1,8 @@
 // Minimal hand-rolled Supabase type so we get typed queries
 // without needing the CLI type-gen step.
 
+import { DimensionScores } from './index';
+
 export interface TradeRow {
   id: string;
   trade_date: string;          // 'YYYY-MM-DD'
@@ -13,6 +15,11 @@ export interface TradeRow {
   retro_note: string | null;
   created_at: string;
   updated_at: string;
+  // New trade rating fields
+  admin_opinion_rating?: number;      // 1-10: Your subjective quality score
+  admin_opinion_comment?: string;     // Why you rated it that way
+  calendar_context?: string;          // 'january' | 'april' | 'june' | 'july' | etc.
+  dimension_scores?: DimensionScores; // All calculated rating dimensions
 }
 
 export interface TradeAsset {

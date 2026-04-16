@@ -1,13 +1,33 @@
-import { useState, useMemo } from 'react';
-import { RotateCcw, Users, History, Calculator } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { RotateCcw, Users, History, Calculator, Zap } from 'lucide-react';
 import { BaseballPlayer } from './types';
 import { SCORING } from './lib/scoring';
+import { PLAYERS } from './data/players';
+import { loadRosters, fetchRostersFromSupabase } from './lib/rosterStorage';
+import { isSupabaseConfigured } from './lib/supabase';
+import { fetchTrades } from './lib/tradeHistory';
 import TradePanel, { PanelSlot } from './components/TradePanel';
 import Verdict from './components/Verdict';
-import AdminPage from './components/AdminPage';
+import RostersPage from './components/RostersPage';
 import HistoryPage from './components/HistoryPage';
+import CommissionerDashboard from './components/CommissionerDashboard';
 
-type View = 'calculator' | 'history' | 'rosters';
+/** Merge saved roster overrides (fantasyTeam, capValue) into the player list. */
+function buildEnrichedPlayers(): BaseballPlayer[] {
+  const saved = loadRosters();
+  if (!saved) return PLAYERS;
+  return PLAYERS.map(p => {
+    const ov = saved.data[p.id];
+    if (!ov) return p;
+    return {
+      ...p,
+      ...(ov.fantasyTeam != null ? { fantasyTeam: ov.fantasyTeam } : {}),
+      ...(ov.capValue    != null ? { capValue:    ov.capValue    } : {}),
+    };
+  });
+}
+
+type View = 'calculator' | 'history' | 'rosters' | 'analytics';
 
 const BATTING_KEY: [string, number][] = [
   ['HR', 4], ['RBI', 3], ['R', 1.5], ['SB', 2],
@@ -26,8 +46,34 @@ export default function App() {
   const [view, setView]   = useState<View>('calculator');
   const [sideA, setSideA] = useState<PanelSlot[]>([]);
   const [sideB, setSideB] = useState<PanelSlot[]>([]);
-  // Bumped each time a trade is logged so HistoryPage re-fetches automatically
   const [historyKey, setHistoryKey] = useState(0);
+  const [trades, setTrades] = useState<any[]>([]);
+
+  // Load enriched players — from localStorage immediately, then refresh from Supabase if available
+  const [enrichedPlayers, setEnrichedPlayers] = useState<typeof PLAYERS>(buildEnrichedPlayers);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured) return;
+    fetchRostersFromSupabase().then(store => {
+      if (!store) return;
+      setEnrichedPlayers(PLAYERS.map(p => {
+        const ov = store.data[p.id];
+        if (!ov) return p;
+        return {
+          ...p,
+          ...(ov.fantasyTeam != null ? { fantasyTeam: ov.fantasyTeam } : {}),
+          ...(ov.capValue    != null ? { capValue:    ov.capValue    } : {}),
+        };
+      }));
+    }).catch(() => {/* keep localStorage version */});
+  }, []);
+
+  // Load trades when analytics view is opened
+  useEffect(() => {
+    if (view === 'analytics') {
+      fetchTrades().then(setTrades);
+    }
+  }, [view, historyKey]);
 
   const allUsedIds = useMemo(() => {
     const ids = new Set<string>();
@@ -36,7 +82,9 @@ export default function App() {
   }, [sideA, sideB]);
 
   function addTo(side: 'A' | 'B', player: BaseballPlayer) {
-    const slot: PanelSlot = { player, cap: 0 };
+    // Pre-fill cap from saved roster data if available
+    const cap = player.capValue ?? 0;
+    const slot: PanelSlot = { player, cap };
     if (side === 'A') setSideA(p => [...p, slot]);
     else setSideB(p => [...p, slot]);
   }
@@ -58,7 +106,7 @@ export default function App() {
 
   // Rosters is a full-page takeover (has its own header/close button)
   if (view === 'rosters') {
-    return <AdminPage onClose={() => setView('calculator')} />;
+    return <RostersPage onClose={() => setView('calculator')} />;
   }
 
   return (
@@ -93,6 +141,14 @@ export default function App() {
               }`}
             >
               <History size={12} /> History
+            </button>
+            <button
+              onClick={() => setView('analytics')}
+              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md font-medium transition-colors ${
+                view === 'analytics' ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-gray-300'
+              }`}
+            >
+              <Zap size={12} /> Analytics
             </button>
             <button
               onClick={() => setView('rosters')}
@@ -164,6 +220,7 @@ export default function App() {
                 onAdd={p => addTo('A', p)}
                 onCapChange={(i, c) => capChange('A', i, c)}
                 onRemove={i => remove('A', i)}
+                players={enrichedPlayers}
               />
               <TradePanel
                 label="Side B"
@@ -173,6 +230,7 @@ export default function App() {
                 onAdd={p => addTo('B', p)}
                 onCapChange={(i, c) => capChange('B', i, c)}
                 onRemove={i => remove('B', i)}
+                players={enrichedPlayers}
               />
             </div>
 
@@ -204,6 +262,13 @@ export default function App() {
 
       {/* ── History ─────────────────────────────────────────────────────── */}
       {view === 'history' && <HistoryPage key={historyKey} />}
+
+      {/* ── Analytics ───────────────────────────────────────────────────── */}
+      {view === 'analytics' && (
+        <main className="max-w-6xl mx-auto px-4 py-6">
+          <CommissionerDashboard trades={trades} />
+        </main>
+      )}
     </div>
   );
 }
