@@ -252,7 +252,7 @@ export default function App() {
                   Search players on each side · enter cap values · get a verdict.
                 </p>
                 <p className="text-gray-700 text-xs mt-2">
-                  50 pts / $1 cap · champion target ~12,500 pts · 225 cap budget
+                  Peer-tier market pricing · champion target ~12,500 pts · 225 cap budget
                 </p>
               </div>
             )}

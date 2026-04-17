@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, ChevronDown, ChevronUp, AlertTriangle, Info, TrendingDown } from 'lucide-react';
 import { BaseballPlayer, Position, Warning } from '../types';
-import { analyzePlayer, MARKET_RATE } from '../lib/scoring';
+import { analyzePlayer } from '../lib/scoring';
 
 const POS_BADGE: Record<Position, string> = {
   C:   'bg-sky-500/20 text-sky-300 border-sky-500/30',
@@ -104,7 +104,7 @@ export default function TradeSlot({ player, cap, onCapChange, onRemove }: Props)
           <p className="text-lg font-bold text-white font-mono leading-none pt-1">
             {pts.toFixed(0)}
           </p>
-          <p className="text-xs text-gray-500">≈ ${marketValue.toFixed(1)} value</p>
+          <p className="text-xs text-gray-500">mkt ≈ ${marketValue.toFixed(1)}</p>
         </div>
         {/* Surplus */}
         <div>
@@ -112,7 +112,7 @@ export default function TradeSlot({ player, cap, onCapChange, onRemove }: Props)
           <p className={`text-lg font-bold font-mono leading-none pt-1 ${surplusColor}`}>
             {surplus >= 0 ? '+' : ''}{surplus.toFixed(1)}
           </p>
-          <p className="text-xs text-gray-500">at ${MARKET_RATE}/pt</p>
+          <p className="text-xs text-gray-500">vs peer market</p>
         </div>
       </div>
 
