@@ -7,6 +7,7 @@ import {
   CapPathYear,
   PlayerAnalysis,
 } from '../types';
+import { getMarketValue } from './marketPricing';
 
 // ── Scam League Scoring ───────────────────────────────────────────────────
 // Batting: H=1 (all hits), 1B=1 bonus, 2B=1.5 bonus, 3B=2 bonus, HR=4 bonus
@@ -37,11 +38,12 @@ export const SCORING = {
 } as const;
 
 /**
- * Points per $1 of cap (calibrated so a $20 cap / 1,000 pt player ≈ breakeven).
- * Champion target ~12,500 pts across 13 starters ≈ 962 avg.
- * 200 active cap → 12,500/200 = ~62.5, rounded to 50 to keep surplus intuitive.
+ * Linear calibration constant: champion target 12,500 pts / $225 active cap ≈ $55.6/pt.
+ * Retained for ratio-based helpers (e.g. trade rating cap-efficiency score).
+ * The headline `marketValue` / `surplus` now go through peer-tier pricing in
+ * ./marketPricing which reads actual league caps rather than a flat rate.
  */
-export const MARKET_RATE = 50;
+export const MARKET_RATE = 12500 / 225;
 
 // ── Point calculators ─────────────────────────────────────────────────────
 export function batterPts(s: BatterStats): number {
@@ -274,7 +276,7 @@ export function getWarnings(player: BaseballPlayer, cap: number): Warning[] {
 // ── Full analysis ─────────────────────────────────────────────────────────
 export function analyzePlayer(player: BaseballPlayer, cap: number): PlayerAnalysis {
   const pts = +calcPts(player).toFixed(1);
-  const marketValue = +(pts / MARKET_RATE).toFixed(1);
+  const marketValue = getMarketValue(player, pts);
   const surplus = +(marketValue - cap).toFixed(1);
 
   // Cap path uses actual escalation brackets, not flat cap
@@ -283,7 +285,7 @@ export function analyzePlayer(player: BaseballPlayer, cap: number): PlayerAnalys
     let rollingCap = cap;
     for (let yr = 0; yr <= 2; yr++) {
       const p = agedPts(player, yr);
-      const mv = +(p / MARKET_RATE).toFixed(1);
+      const mv = getMarketValue(player, p);
       years.push({
         label: yr === 0 ? 'Y0 (now)' : `Y${yr}`,
         pts: +p.toFixed(1),
@@ -308,22 +310,26 @@ export function analyzePlayer(player: BaseballPlayer, cap: number): PlayerAnalys
 export interface SideAnalysis {
   totalPts: number;
   totalCap: number;
+  totalMarketValue: number;
   totalSurplus: number;
   dynSurplus: number; // sum of 3-year surplus across all players (accounts for escalation)
 }
 
 export function analyzeSide(slots: { player: BaseballPlayer; cap: number }[]): SideAnalysis {
-  let totalPts = 0, totalCap = 0, dynSurplus = 0;
+  let totalPts = 0, totalCap = 0, totalMV = 0, totalSurplus = 0, dynSurplus = 0;
   for (const { player, cap } of slots) {
     const a = analyzePlayer(player, cap);
     totalPts += a.pts;
     totalCap += cap;
+    totalMV += a.marketValue;
+    totalSurplus += a.surplus;
     dynSurplus += a.capPath.reduce((sum, y) => sum + y.surplus, 0);
   }
   return {
-    totalPts:    +totalPts.toFixed(1),
+    totalPts:         +totalPts.toFixed(1),
     totalCap,
-    totalSurplus: +(totalPts / MARKET_RATE - totalCap).toFixed(1),
-    dynSurplus:  +dynSurplus.toFixed(1),
+    totalMarketValue: +totalMV.toFixed(1),
+    totalSurplus:     +totalSurplus.toFixed(1),
+    dynSurplus:       +dynSurplus.toFixed(1),
   };
 }

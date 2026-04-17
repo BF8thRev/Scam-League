@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react';
 import { BaseballPlayer } from '../types';
-import { analyzeSide, MARKET_RATE } from '../lib/scoring';
+import { analyzeSide } from '../lib/scoring';
 import PlayerSearch from './PlayerSearch';
 import TradeSlot from './TradeSlot';
 
@@ -78,7 +78,7 @@ export default function TradePanel({ label, color, slots, allUsedIds, onAdd, onC
           </div>
           <div>
             <p className="text-xs text-gray-500">Market Val</p>
-            <p className="text-sm font-bold text-white font-mono">${(side.totalPts / MARKET_RATE).toFixed(1)}</p>
+            <p className="text-sm font-bold text-white font-mono">${side.totalMarketValue.toFixed(1)}</p>
           </div>
           <div>
             <p className="text-xs text-gray-500">Surplus</p>
